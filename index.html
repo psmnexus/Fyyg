@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0b132b" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>PSM Group of Schools — Institutional Academic, Office & COE Suite</title>
+<style>
+  :root {
+    --bg-canvas: #eef2f9;
+    --navy-950: #060b19;
+    --navy-900: #0f172a;
+    --navy-800: #1e293b;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --indigo: #4f46e5;
+    --emerald: #059669;
+    --amber: #d97706;
+    --rose: #e11d48;
+    --violet: #7c3aed;
+    --text: #0f172a;
+    --muted: #64748b;
+    --surface: rgba(255, 255, 255, 0.94);
+    --shadow-3d: 0 14px 30px -10px rgba(15, 23, 42, 0.13), 0 4px 10px -2px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  html, body {
+    width: 100%; max-width: 100vw; overflow-x: hidden;
+    background: radial-gradient(circle at 12% 8%, #dbeafe 0%, transparent 42%),
+                radial-gradient(circle at 88% 14%, #e0e7ff 0%, transparent 45%),
+                var(--bg-canvas);
+    color: var(--text); min-height: 100vh; line-height: 1.55; -webkit-tap-highlight-color: transparent;
+  }
+  button, input, select, textarea { font: inherit; max-width: 100%; }
+  button { cursor: pointer; min-height: 42px; touch-action: manipulation; }
+  input, select, textarea {
+    min-height: 42px; padding: 9px 13px; border: 1px solid #cbd5e1; border-radius: 11px;
+    width: 100%; background: #ffffff; font-size: 0.9rem;
+    box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.04); transition: all 0.18s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18), inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  }
+  input:disabled { background: #f1f5f9; color: #64748b; cursor: not-allowed; }
+
+  .app-topbar {
+    background: linear-gradient(135deg, #060b19 0%, #172554 55%, #1e3a8a 100%);
+    color: #fff; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    position: sticky; top: 0; z-index: 60; width: 100%;
+    box-shadow: 0 10px 25px rgba(6, 11, 25, 0.36), inset 0 1px 0 rgba(255,255,255,0.16);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+  .hamburger-btn {
+    width: 38px; height: 38px; min-height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);
+    color: #fff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hamburger-btn:hover { background: rgba(255,255,255,0.24); }
+  .brand-emblem {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #dbeafe);
+    color: #0f172a; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3), inset 0 -3px 0 #93c5fd; flex-shrink: 0;
+  }
+  .brand-title { min-width: 0; flex: 1; }
+  .brand-title h1 { font-size: 1.02rem; font-weight: 800; letter-spacing: 0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .brand-title p { font-size: 0.7rem; color: #93c5fd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .header-actions { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+
+  .notif-pill {
+    background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.24); color: #fff;
+    padding: 5px 11px; min-height: 36px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 700; font-size: 0.8rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .notif-pill:hover { background: rgba(255, 255, 255, 0.22); transform: translateY(-1px); }
+  .notif-dot {
+    background: linear-gradient(135deg, #f43f5e, #e11d48); color: #fff;
+    padding: 1px 6px; border-radius: 999px; font-size: 0.7rem; font-weight: 800;
+  }
+
+  .spotlight-bar {
+    background: linear-gradient(90deg, #fffbeb, #fef3c7); border-bottom: 1px solid #fde68a; color: #92400e;
+    padding: 6px 16px; font-size: 0.8rem; display: flex; align-items: center; gap: 10px; overflow: hidden;
+  }
+  .spotlight-tag {
+    background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-weight: 800;
+    padding: 2px 9px; border-radius: 6px; font-size: 0.68rem; flex-shrink: 0;
+  }
+  .marquee-track { white-space: nowrap; animation: scrollMarquee 32s linear infinite; font-weight: 500; }
+  @keyframes scrollMarquee { 0% { transform: translateX(30%); } 100% { transform: translateX(-100%); } }
+
+  .btn {
+    border: none; border-radius: 11px; padding: 9px 15px; font-weight: 700; font-size: 0.84rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.15s;
+  }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.04); }
+  .btn:active { transform: translateY(2px); }
+  .btn-primary { background: linear-gradient(180deg, #3b82f6, #1d4ed8); color: #fff; box-shadow: 0 4px 0 #1e3a8a, 0 8px 16px rgba(37,99,235,0.25); }
+  .btn-navy { background: linear-gradient(180deg, #1e293b, #0f172a); color: #fff; box-shadow: 0 4px 0 #020617, 0 8px 16px rgba(15,23,42,0.22); }
+  .btn-success { background: linear-gradient(180deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 0 #065f46, 0 8px 16px rgba(5,150,105,0.22); }
+  .btn-danger { background: linear-gradient(180deg, #f43f5e, #e11d48); color: #fff; box-shadow: 0 4px 0 #881337, 0 8px 16px rgba(225,29,72,0.22); }
+  .btn-warn { background: linear-gradient(180deg, #f59e0b, #d97706); color: #fff; box-shadow: 0 4px 0 #78350f, 0 8px 16px rgba(217,119,6,0.22); }
+  .btn-purple { background: linear-gradient(180deg, #8b5cf6, #6d28d9); color: #fff; box-shadow: 0 4px 0 #4c1d95, 0 8px 16px rgba(109,40,217,0.22); }
+  .btn-outline { background: #fff; color: var(--navy-900); border: 1px solid #cbd5e1; box-shadow: 0 3px 0 #cbd5e1; }
+  .btn-sm { min-height: 34px; padding: 5px 10px; font-size: 0.76rem; border-radius: 8px; box-shadow: 0 2px 0 rgba(15,23,42,0.18); }
+
+  .att-circle-group { display: inline-flex; align-items: center; gap: 10px; }
+  .att-circle-btn {
+    width: 40px; height: 40px; min-height: 40px; border-radius: 50%;
+    border: 2px solid #cbd5e1; background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    color: #475569; font-weight: 900; font-size: 0.84rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08), inset 0 1px 0 #ffffff;
+    transition: all 0.16s cubic-bezier(.2,.8,.2,1); user-select: none; padding: 0;
+  }
+  .att-circle-btn:hover { transform: translateY(-2px) scale(1.04); }
+  .att-circle-btn.active-P { background: linear-gradient(145deg, #10b981, #059669); border-color: #047857; color: #fff; box-shadow: 0 6px 14px rgba(5, 150, 105, 0.4); transform: scale(1.08); }
+  .att-circle-btn.active-A { background: linear-gradient(145deg, #f43f5e, #e11d48); border-color: #be123c; color: #fff; box-shadow: 0 6px 14px rgba(225, 29, 72, 0.4); transform: scale(1.08); }
+  .att-circle-btn.active-OD { background: linear-gradient(145deg, #3b82f6, #1d4ed8); border-color: #1e40af; color: #fff; box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4); transform: scale(1.08); }
+  .att-circle-btn.active-ML { background: linear-gradient(145deg, #8b5cf6, #6d28d9); border-color: #5b21b6; color: #fff; box-shadow: 0 6px 14px rgba(124, 58, 237, 0.4); transform: scale(1.08); }
+
+  .landing-wrap { max-width: 1280px; margin: 22px auto; padding: 0 16px 60px; }
+  .hero-3d {
+    background: linear-gradient(135deg, #060b19 0%, #172554 55%, #312e81 100%);
+    color: #fff; border-radius: 22px; padding: 28px 24px; margin-bottom: 24px;
+    box-shadow: 0 22px 45px -15px rgba(15, 23, 42, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .hero-3d h2 { font-size: 1.48rem; font-weight: 800; margin-bottom: 8px; }
+  .hero-3d p { color: #cbd5e1; font-size: 0.9rem; max-width: 820px; }
+
+  .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(225px, 1fr)); gap: 16px; margin-bottom: 24px; perspective: 1000px; }
+  .role-card-3d {
+    background: var(--surface); backdrop-filter: blur(12px);
+    border-radius: 18px; border: 1px solid rgba(255,255,255,0.85); padding: 20px;
+    box-shadow: var(--shadow-3d); display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.22s cubic-bezier(.2,.8,.2,1), box-shadow 0.22s ease;
+  }
+  .role-card-3d:hover { transform: translateY(-6px) rotateX(2deg); box-shadow: 0 22px 40px -12px rgba(15, 23, 42, 0.2), inset 0 1px 0 #fff; }
+  .role-icon-3d {
+    width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    color: #fff; margin-bottom: 12px; box-shadow: 0 8px 16px rgba(15,23,42,0.18), inset 0 1px 0 rgba(255,255,255,0.35);
+  }
+  .role-card-3d h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; color: var(--navy-900); }
+  .role-card-3d p { font-size: 0.83rem; color: var(--muted); margin-bottom: 14px; }
+
+  .app-shell { display: flex; min-height: calc(100vh - 60px); width: 100%; position: relative; }
+  .sidebar {
+    width: 268px; background: linear-gradient(180deg, #060b19 0%, #172554 100%);
+    color: #e2e8f0; flex-shrink: 0; display: flex; flex-direction: column;
+    box-shadow: 6px 0 24px rgba(6, 11, 25, 0.2); transition: margin-left 0.25s ease, transform 0.25s ease;
+  }
+  .sidebar.desktop-collapsed { margin-left: -268px; }
+  .sidebar-header { padding: 18px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); }
+  .sidebar-user { font-weight: 800; color: #fff; font-size: 0.96rem; }
+  .sidebar-role { font-size: 0.72rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 3px; font-weight: 700; }
+  .nav-list { padding: 14px 10px; flex: 1; overflow-y: auto; }
+  .nav-item {
+    width: 100%; text-align: left; background: transparent; color: #cbd5e1; border: none;
+    padding: 12px 14px; border-radius: 12px; font-size: 0.86rem; font-weight: 600;
+    display: flex; align-items: center; gap: 11px; margin-bottom: 6px; transition: all 0.15s ease;
+  }
+  .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.88; }
+  .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; transform: translateX(2px); }
+  .nav-item.active {
+    background: linear-gradient(90deg, #2563eb, #4f46e5); color: #fff;
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(6,11,25,0.52); backdrop-filter: blur(2px); z-index: 75; }
+  .sidebar-overlay.open { display: block; }
+
+  .main-content { flex: 1; min-width: 0; padding: 22px 26px 60px; overflow-x: hidden; }
+  .workspace-inner { max-width: 1340px; margin: 0 auto; width: 100%; }
+
+  .card {
+    background: var(--surface); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.9); border-radius: 18px; padding: 20px;
+    margin-bottom: 20px; box-shadow: var(--shadow-3d); width: 100%; overflow: hidden;
+  }
+  .card-title {
+    font-size: 1.04rem; font-weight: 800; color: var(--navy-900); margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center; gap: 10px;
+  }
+  .card-title-left { display: flex; align-items: center; gap: 10px; }
+  .title-icon {
+    width: 34px; height: 34px; border-radius: 10px; background: #eff6ff; color: var(--primary);
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    box-shadow: inset 0 -2px 0 #bfdbfe;
+  }
+  .title-icon svg { width: 18px; height: 18px; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px; }
+
+  .stat-box {
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px;
+    box-shadow: 0 8px 18px -6px rgba(15, 23, 42, 0.08), inset 0 1px 0 #fff;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .stat-box.clickable { cursor: pointer; }
+  .stat-box.clickable:hover { transform: translateY(-4px); border-color: #93c5fd; box-shadow: 0 14px 26px -8px rgba(37, 99, 235, 0.2); }
+  .stat-label { font-size: 0.74rem; color: var(--muted); font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
+  .stat-val { font-size: 1.55rem; font-weight: 800; color: var(--navy-900); margin-top: 6px; }
+  .stat-sub { font-size: 0.76rem; color: var(--primary); font-weight: 600; margin-top: 4px; }
+
+  .form-group { margin-bottom: 14px; min-width: 0; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
+
+  .table-wrap { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: #f1f5f9; color: var(--navy-900); font-weight: 800; text-align: left; padding: 11px 13px; border-bottom: 1px solid #cbd5e1; white-space: nowrap; }
+  td { padding: 10px 13px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px; font-size: 0.73rem; font-weight: 700; white-space: nowrap; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-purple { background: #f3e8ff; color: #6b21a8; }
+  .badge-gray { background: #e2e8f0; color: #334155; }
+
+  .lab-paired-cell { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left: 3px solid #7c3aed; }
+  .fac-tt-active-cell { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 3px solid #2563eb; }
+  .fac-tt-free-cell { background: #f8fafc; color: #94a3b8; font-size: 0.76rem; }
+
+  .gen-range-panel {
+    background: linear-gradient(135deg, #eff6ff, #f8fafc);
+    border: 1.5px solid #93c5fd; border-radius: 14px; padding: 14px 16px; margin-bottom: 14px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+  }
+  .gen-range-toggle { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 0.88rem; color: var(--navy-900); cursor: pointer; }
+  .gen-range-toggle input { width: 20px; height: 20px; min-height: 20px; accent-color: var(--primary); }
+  .gen-range-inputs { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .gen-range-inputs label { font-size: 0.8rem; font-weight: 700; color: #334155; white-space: nowrap; }
+  .gen-range-inputs input { width: 88px; min-height: 36px; padding: 5px 8px; font-weight: 700; text-align: center; }
+
+  .login-modal-backdrop {
+    position: fixed; inset: 0;
+    background: radial-gradient(circle at 50% 35%, rgba(30, 58, 138, 0.72), rgba(6, 11, 25, 0.88));
+    backdrop-filter: blur(10px); z-index: 120;
+    display: none; align-items: center; justify-content: center; padding: 16px;
+  }
+  .login-modal-backdrop.open { display: flex; }
+  .login-card-3d {
+    background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 24px; max-width: 440px; width: 100%; overflow: hidden;
+    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.55);
+  }
+  .login-banner { background: linear-gradient(135deg, #060b19 0%, #172554 60%, #2563eb 100%); color: #fff; padding: 24px 24px 20px; position: relative; }
+  .login-close-btn {
+    position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; min-height: 34px;
+    border-radius: 10px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+  }
+  .login-role-pill {
+    display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 999px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .login-body { padding: 24px; }
+  .input-icon-group { position: relative; display: flex; align-items: center; }
+  .input-icon-left { position: absolute; left: 13px; color: #64748b; display: flex; align-items: center; pointer-events: none; }
+  .input-icon-left svg { width: 18px; height: 18px; }
+  .input-with-icon { padding-left: 42px; padding-right: 42px; min-height: 46px; border-radius: 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; font-size: 0.94rem; font-weight: 500; }
+  .input-with-icon:focus { background: #fff; border-color: var(--primary); }
+  .pass-eye-btn { position: absolute; right: 8px; width: 34px; height: 34px; min-height: 34px; background: transparent; border: none; color: #64748b; display: flex; align-items: center; justify-content: center; }
+  .login-error-box { background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; padding: 10px 12px; border-radius: 10px; font-size: 0.82rem; font-weight: 600; margin-bottom: 14px; display: none; align-items: center; gap: 8px; }
+
+  .cal-scroll-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .cal-board { min-width: 740px; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(100px, 1fr)); gap: 10px; }
+  .cal-dow { text-align: center; font-weight: 800; font-size: 0.78rem; color: var(--navy-900); background: #f1f5f9; padding: 9px 4px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cal-cell { min-height: 112px; border-radius: 14px; border: 1px solid #e2e8f0; background: #ffffff; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04); transition: transform 0.14s, border-color 0.14s, box-shadow 0.14s; }
+  .cal-cell.interactive { cursor: pointer; }
+  .cal-cell.interactive:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(37,99,235,0.14); }
+  .cal-cell.empty { background: transparent; border: none; box-shadow: none; }
+  .cal-cell.holiday { background: linear-gradient(155deg, #fff1f2, #ffe4e6); border-color: #fecdd3; }
+  .cal-cell.working-wknd { background: linear-gradient(155deg, #ecfdf5, #d1fae5); border-color: #a7f3d0; }
+  .cal-cell.exam-day { background: linear-gradient(155deg, #eff6ff, #dbeafe); border-color: #bfdbfe; }
+  .cal-cell.event-day { background: linear-gradient(155deg, #fffbeb, #fef3c7); border-color: #fde68a; }
+  .cal-day-num { font-weight: 800; font-size: 0.96rem; display: flex; justify-content: space-between; align-items: center; }
+  .cal-tag { font-size: 0.73rem; font-weight: 700; line-height: 1.3; word-break: break-word; }
+  .cal-pill-sub { font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,0.75); display: inline-block; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; align-items: center; background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; }
+  .filter-bar input, .filter-bar select { min-height: 38px; padding: 6px 11px; font-size: 0.85rem; width: auto; flex: 1; min-width: 150px; }
+  .tbl-inp { min-height: 36px; padding: 5px 8px; font-size: 0.85rem; min-width: 68px; }
+  .tbl-chk { width: 18px; height: 18px; min-height: 18px; accent-color: var(--primary); cursor: pointer; }
+  .sec-pill-lbl { display: inline-flex; align-items: center; gap: 4px; background: #f8fafc; border: 1px solid #cbd5e1; padding: 3px 8px; border-radius: 7px; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
+  .sec-pill-lbl input { width: 14px; height: 14px; min-height: 14px; }
+  .stream-row-tint { background: #f8fafc; }
+
+  .pill-box { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc; max-height: 170px; overflow-y: auto; }
+  .pill-check { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #cbd5e1; padding: 5px 11px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; user-select: none; }
+  .pill-check input { width: auto; min-height: auto; }
+
+  .backup-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+  .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: #f8fafc; border: 1px solid #cbd5e1; padding: 14px; border-radius: 12px; }
+  .switch-row input[type="checkbox"] { width: 22px; height: 22px; min-height: 22px; accent-color: var(--primary); flex-shrink: 0; }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(6, 11, 25, 0.68); backdrop-filter: blur(4px); z-index: 100;
+    display: none; align-items: center; justify-content: center; padding: 14px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: #fff; border-radius: 18px; max-width: 920px; width: 100%; max-height: 90vh;
+    overflow-y: auto; padding: 22px; box-shadow: 0 28px 55px rgba(0,0,0,0.35);
+  }
+
+  .empty-state { text-align: center; padding: 28px 16px; color: var(--muted); background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; font-size: 0.88rem; }
+  .fee-grid-inp { min-height: 36px; padding: 5px 8px; font-weight: 600; text-align: right; min-width: 90px; }
+
+  .official-doc-sheet {
+    background: #ffffff; border: 2px solid #0f172a; padding: 28px 32px; border-radius: 4px;
+    font-family: 'Georgia', 'Times New Roman', serif; color: #000000; line-height: 1.55; position: relative;
+  }
+  .doc-letterhead { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 2.5px double #0f172a; padding-bottom: 14px; margin-bottom: 16px; }
+  .doc-crest { width: 64px; height: 64px; border: 2px solid #0f172a; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #f8fafc; }
+  .doc-title-center { text-align: center; flex: 1; }
+  .doc-title-center h2 { font-size: 1.35rem; letter-spacing: 1px; font-weight: 900; text-transform: uppercase; margin-bottom: 2px; }
+  .doc-title-center p { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #1e293b; }
+  .reg-box-grid { display: inline-flex; border: 1.5px solid #0f172a; margin-top: 4px; }
+  .reg-box-cell { width: 22px; height: 26px; border-right: 1px solid #0f172a; display: inline-block; }
+  .reg-box-cell:last-child { border-right: none; }
+  .doc-meta-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 0.86rem; }
+  .doc-meta-table td { border: 1px solid #475569; padding: 6px 10px; }
+  .doc-instructions { border: 1px solid #64748b; background: #f8fafc; padding: 10px 14px; margin-bottom: 16px; font-size: 0.82rem; }
+  .doc-footer-bar { margin-top: 26px; padding-top: 10px; border-top: 1.5px solid #0f172a; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 700; }
+
+  @media print {
+    body * { visibility: hidden; }
+    #printablePdfArea, #printablePdfArea * { visibility: visible; }
+    #printablePdfArea { position: fixed; left: 0; top: 0; width: 100%; padding: 18px 24px; border: 2px solid #000; box-shadow: none; background: #fff; }
+    .no-print { display: none !important; }
+  }
+
+  @media (max-width: 860px) {
+    .app-topbar { padding: 8px 10px; gap: 6px; }
+    .brand { gap: 7px; }
+    .brand-emblem { width: 32px; height: 32px; border-radius: 8px; }
+    .brand-emblem svg { width: 18px; height: 18px; }
+    .hamburger-btn { width: 34px; height: 34px; min-height: 34px; border-radius: 8px; }
+    .brand-title h1 { font-size: 0.88rem; }
+    .brand-title p { display: none; }
+    .notif-pill { padding: 4px 8px; min-height: 32px; font-size: 0.72rem; gap: 4px; }
+    .notif-label-text { display: none; }
+    .header-actions .btn-sm { padding: 4px 8px; min-height: 32px; font-size: 0.72rem; }
+    .sidebar { position: fixed; top: 52px; bottom: 0; left: 0; z-index: 80; transform: translateX(-100%); margin-left: 0 !important; box-shadow: 10px 0 30px rgba(0,0,0,0.38); }
+    .sidebar.mobile-open { transform: translateX(0); }
+    .main-content { padding: 12px 10px 48px; }
+    .card { padding: 14px; border-radius: 14px; margin-bottom: 14px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 12px; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-topbar">
+  <div class="brand">
+    <button class="hamburger-btn" id="hamburgerToggleBtn" onclick="toggleAppSidebar()" style="display:none;" title="Toggle Navigation Menu" aria-label="Toggle Menu">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="brand-emblem">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+        <path d="M12 7v10M8 11h8"/>
+      </svg>
+    </div>
+    <div class="brand-title">
+      <h1>PSM Group of Schools</h1>
+      <p id="headerSubContext">Tamil Nadu State Board Higher Secondary & School ERP</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="notif-pill" id="notifBellBtn" onclick="openNotificationsModal()" style="display:none;" title="Alerts & Official Messages">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      <span class="notif-label-text">Alerts</span>
+      <span class="notif-dot" id="notifBadgeCount">0</span>
+    </button>
+    <button class="btn btn-sm btn-warn" id="returnAdminBtn" onclick="returnToAdminSession()" style="display:none;">Admin</button>
+    <button class="btn btn-sm btn-danger" id="logoutBtn" onclick="logout()" style="display:none;">Sign Out</button>
+  </div>
+</header>
+
+<div class="spotlight-bar">
+  <span class="spotlight-tag">CAMPUS PULSE</span>
+  <div style="overflow:hidden; flex:1; min-width:0;">
+    <div class="marquee-track" id="spotlightText">
+      Welcome to PSM Group of Schools • Tamil Nadu Higher Secondary Groups I a, I b, III a, III b & III c (with Compulsory Tamil/Second Language & English) • Generalized & Per-Class Student Range Controls.
+    </div>
+  </div>
+</div>
+
+<div id="landingView" class="landing-wrap">
+  <div class="hero-3d">
+    <h2>PSM Group of Schools — Institutional Campus, Office & COE Suite</h2>
+    <p>Complete school governance across Classes 1–10 and Tamil Nadu Higher Secondary Groups for Classes 11 & 12 (<strong>Group I a</strong>: PCM+CS, <strong>Group I b</strong>: PCB+Maths, <strong>Group III a</strong>: CS/Econ/Comm/Acc, <strong>Group III b</strong>: Econ/Comm/Acc/BM, <strong>Group III c</strong>: Hist/Econ/Comm/Acc — all with Compulsory Tamil/Second Language & English)[span_0](start_span)[span_0](end_span).</p>
+  </div>
+
+  <div class="role-grid">
+    <div class="role-card-3d">
+      <div>
+        <div class="role-icon-3d" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h3>Student Portal</h3>
+        <p>View session attendance (Present, Absent, OD, ML), 8-period timetable with paired lab blocks, Academic Calendar, Hall Tickets & Report Cards.</p>
+      </div>
+      <button class="btn btn-primary" onclick="openLoginModal('student')">Student Sign In</button>
+    </div>
+
+    <div class="role-card-3d">
+      <div>
+        <div class="role-icon-3d" style="background:linear-gradient(135deg,#10b981,#047857);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Faculty Portal</h3>
+        <p>View your personal 8-period teaching timetable (which class & room in each period), mark P/A circle attendance once, author QPs & submit marks.</p>
+      </div>
+      <button class="btn btn-success" onclick="openLoginModal('faculty')">Faculty Sign In</button>
+    </div>
+
+    <div class="role-card-3d">
+      <div>
+        <div class="role-icon-3d" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Administrative Office</h3>
+        <p>Edit student attendance & grant OD/ML, collect fees & print receipts, process new admissions, track expenses & issue Bonafide certificates.</p>
+      </div>
+      <button class="btn btn-purple" onclick="openLoginModal('office')">Office Sign In</button>
+    </div>
+
+    <div class="role-card-3d">
+      <div>
+        <div class="role-icon-3d" style="background:linear-gradient(135deg,#f59e0b,#b45309);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Controller of Exams (COE)</h3>
+        <p>Approve & seal printable Exam Question Papers, verify marks, authorize OD/ML re-exams, set deadlines & randomize invigilators.</p>
+      </div>
+      <button class="btn btn-warn" onclick="openLoginModal('coe')">COE Sign In</button>
+    </div>
+
+    <div class="role-card-3d">
+      <div>
+        <div class="role-icon-3d" style="background:linear-gradient(135deg,#1e293b,#060b19);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Administrator Console</h3>
+        <p>Manage Indian Academic Calendar, bulk-create Classes 1–12 & Higher Sec Groups I a–III c with generalized or per-class ranges, and backup data[span_1](start_span)[span_1](end_span).</p>
+      </div>
+      <button class="btn btn-navy" onclick="openLoginModal('admin')">Admin Sign In</button>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-left"><span class="title-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span><span>PSM Group of Schools Overview</span></div>
+      </div>
+      <div class="grid-2">
+        <div class="stat-box"><div class="stat-label">Active Tracks</div><div class="stat-val" id="landGrades">0</div></div>
+        <div class="stat-box"><div class="stat-label">Class Sections</div><div class="stat-val" id="landClasses">0</div></div>
+        <div class="stat-box"><div class="stat-label">Students</div><div class="stat-val" id="landStudents">0</div></div>
+        <div class="stat-box"><div class="stat-label">Faculty</div><div class="stat-val" id="landFaculty">0</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-left"><span class="title-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><span>Campus Notices & Upcoming Events</span></div>
+      </div>
+      <div id="landingEventsList"></div>
+    </div>
+  </div>
+</div>
+
+<div id="workspaceShell" class="app-shell" style="display:none;">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileSidebar()"></div>
+  <aside class="sidebar" id="appSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-user" id="sidebarUserName">User</div>
+      <div class="sidebar-role" id="sidebarUserRole">Role</div>
+    </div>
+    <div class="nav-list" id="sidebarNav"></div>
+  </aside>
+  <main class="main-content"><div class="workspace-inner" id="mainWorkspace"></div></main>
+</div>
+
+<div class="login-modal-backdrop" id="loginModal" onclick="if(event.target===this) closeModal('loginModal')">
+  <div class="login-card-3d">
+    <div class="login-banner" id="loginBannerBg">
+      <button class="login-close-btn" onclick="closeModal('loginModal')" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="login-role-pill" id="loginRoleBadge">PSM PORTAL ACCESS</div>
+      <h2 id="loginModalTitle" style="font-size:1.35rem; font-weight:800; margin-bottom:4px;">Sign In</h2>
+      <p id="loginModalSubtitle" style="font-size:0.82rem; color:#cbd5e1;">Enter your institutional credentials to continue</p>
+    </div>
+    <div class="login-body">
+      <div class="form-group">
+        <label for="loginUsername">Institutional ID / Username</label>
+        <div class="input-icon-group">
+          <span class="input-icon-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <input type="text" id="loginUsername" class="input-with-icon" autocomplete="off" placeholder="Username, Reg ID, or Admission No" onkeydown="if(event.key==='Enter') document.getElementById('loginPassword').focus()" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Security Password</label>
+        <div class="input-icon-group">
+          <span class="input-icon-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </span>
+          <input type="password" id="loginPassword" class="input-with-icon" placeholder="Enter your password" onkeydown="if(event.key==='Enter') submitLogin()" />
+          <button type="button" class="pass-eye-btn" onclick="togglePasswordVisibility()" title="Show / Hide Password">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="loginError" class="login-error-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="loginErrorText">Authentication failed.</span>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; min-height:46px; font-size:0.95rem;" onclick="submitLogin()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        <span>Authenticate & Launch Dashboard</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="inspectModal" onclick="if(event.target===this) closeModal('inspectModal')">
+  <div class="modal-box">
+    <div class="card-title no-print">
+      <span id="inspectModalTitle">Details</span>
+      <button class="btn btn-sm btn-outline" onclick="closeModal('inspectModal')">Close</button>
+    </div>
+    <div id="inspectModalBody"></div>
+  </div>
+</div>
+
+<script>
+const SCHOOL_NAME = "PSM Group of Schools";
+const SCHOOL_CREST_SVG = `
+  <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="#0f172a" stroke-width="2.4">
+    <path d="M24 4L6 13v12c0 11.1 7.68 21.48 18 24 10.32-2.52 18-12.9 18-24V13L24 4z" fill="#eff6ff"/>
+    <path d="M24 11v24M14 21h20" stroke="#1e3a8a" stroke-width="2.6"/>
+    <circle cx="24" cy="21" r="6" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+    <text x="24" y="23.5" text-anchor="middle" font-size="6.5" font-weight="900" fill="#0f172a" stroke="none">PSM</text>
+  </svg>
+`;
+
+const ICONS = {
+  dashboard: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>`,
+  calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  layers: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  users: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  check: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
+  file: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+  award: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>`,
+  wallet: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>`,
+  message: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  shield: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  sliders: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`,
+  database: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+  alert: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+  edit: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  printer: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>`
+};
+function iconBox(svg) { return `<span class="title-icon">${svg}</span>`; }
+
+function trueRandomInt(maxExclusive) {
+  if (maxExclusive <= 1) return 0;
+  if (window.crypto && window.crypto.getRandomValues) {
+    const arr = new Uint32Array(1);
+    window.crypto.getRandomValues(arr);
+    return arr[0] % maxExclusive;
+  }
+  return Math.floor(Math.random() * maxExclusive);
+}
+function trueRandomRange(minVal, maxVal) {
+  const lo = Math.min(minVal, maxVal), hi = Math.max(minVal, maxVal);
+  return lo + trueRandomInt(hi - lo + 1);
+}
+function trueShuffle(array) {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = trueRandomInt(i + 1);
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const DEFAULT_INDIAN_HOLIDAYS = {
+  "2026-01-01": { type: "Holiday", label: "New Year's Day" },
+  "2026-01-14": { type: "Holiday", label: "Makar Sankranti / Pongal" },
+  "2026-01-15": { type: "Holiday", label: "Thiruvalluvar Day / Pongal" },
+  "2026-01-26": { type: "Holiday", label: "Republic Day" },
+  "2026-03-04": { type: "Holiday", label: "Holi Festival" },
+  "2026-03-19": { type: "Holiday", label: "Ugadi / Gudi Padwa" },
+  "2026-03-20": { type: "Holiday", label: "Eid-ul-Fitr" },
+  "2026-03-26": { type: "Holiday", label: "Ram Navami" },
+  "2026-04-03": { type: "Holiday", label: "Good Friday" },
+  "2026-04-14": { type: "Holiday", label: "Ambedkar Jayanti / Tamil New Year" },
+  "2026-05-01": { type: "Holiday", label: "May Day / Buddha Purnima" },
+  "2026-08-15": { type: "Holiday", label: "Independence Day" },
+  "2026-08-26": { type: "Holiday", label: "Onam / Milad-un-Nabi" },
+  "2026-09-04": { type: "Holiday", label: "Janmashtami" },
+  "2026-09-14": { type: "Holiday", label: "Ganesh Chaturthi" },
+  "2026-10-02": { type: "Holiday", label: "Gandhi Jayanti" },
+  "2026-10-19": { type: "Holiday", label: "Ayudha Puja" },
+  "2026-10-20": { type: "Holiday", label: "Vijayadashami / Dussehra" },
+  "2026-11-08": { type: "Holiday", label: "Deepavali / Diwali" },
+  "2026-11-09": { type: "Holiday", label: "Diwali Holiday" },
+  "2026-11-24": { type: "Holiday", label: "Guru Nanak Jayanti" },
+  "2026-12-25": { type: "Holiday", label: "Christmas Day" }
+};
+const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function getCalendarDayPolicy(dateStr) {
+  const override = state.academicCalendar[dateStr];
+  const dObj = new Date(dateStr + "T00:00:00");
+  const dow = dObj.getDay();
+  const defaultHol = DEFAULT_INDIAN_HOLIDAYS[dateStr];
+  const examsOnDay = state.examTimetable.filter(e => e.date === dateStr);
+  const eventsOnDay = state.events.filter(ev => ev.startDateTime && ev.startDateTime.slice(0, 10) === dateStr);
+
+  if (override) {
+    return { dateStr, isWorking: override.type === "Working", type: override.type, label: override.label || (override.type === "Working" ? `Working (${override.followDay} TT)` : "Holiday"), followDay: override.followDay || DAY_NAMES[dow], examsOnDay, eventsOnDay };
+  }
+  if (defaultHol) return { dateStr, isWorking: false, type: "Holiday", label: defaultHol.label, followDay: null, examsOnDay, eventsOnDay };
+  if (dow === 0 || dow === 6) return { dateStr, isWorking: false, type: "Weekend", label: dow === 0 ? "Sunday Holiday" : "Saturday Holiday", followDay: null, examsOnDay, eventsOnDay };
+  return { dateStr, isWorking: true, type: "Working", label: `Regular ${DAY_NAMES[dow]}`, followDay: DAY_NAMES[dow], examsOnDay, eventsOnDay };
+}
+
+const TWO_TIER_SPECIALIST_CODES = new Set(["PED", "LIB", "CSC"]);
+const LAB_TO_THEORY_MAP = { SLB: "SCI", PLB: "PHY", CHB: "CHE", BLB: "BIO", CLB: "CSC" };
+const STAGE_LABELS = {
+  Primary: "Primary (Classes 1–5)",
+  Secondary: "Secondary (Classes 6–10)",
+  SecondaryAll: "Secondary & Higher Sec (Classes 6–12)",
+  HigherSecondary: "Higher Secondary (Classes 11–12)"
+};
+
+function getDisplayStageLabel(faculty) {
+  if (!faculty || !faculty.stage) return "General";
+  if (TWO_TIER_SPECIALIST_CODES.has(faculty.subjectCode) && faculty.stage === "Secondary") return "Secondary (Classes 6–12)";
+  return STAGE_LABELS[faculty.stage] || faculty.stage;
+}
+
+function getStageForGrade(gradeNum) {
+  const g = parseInt(gradeNum, 10);
+  if (g <= 5) return "Primary";
+  if (g <= 10) return "Secondary";
+  return "HigherSecondary";
+}
+
+function isFacultyStageEligibleForGrade(facultyStage, targetGrade, subjectCode = "") {
+  const g = parseInt(targetGrade, 10);
+  if (TWO_TIER_SPECIALIST_CODES.has(subjectCode)) {
+    if (facultyStage === "Primary") return g >= 1 && g <= 5;
+    if (facultyStage === "Secondary" || facultyStage === "HigherSecondary") return g >= 6 && g <= 12;
+    return false;
+  }
+  if (facultyStage === "Primary") return g >= 1 && g <= 5;
+  if (facultyStage === "Secondary") return g >= 6 && g <= 10;
+  if (facultyStage === "HigherSecondary") return g >= 9 && g <= 12;
+  return false;
+}
+
+const UNIFIED_SUBJECT_MASTER = {
+  ENG: { code: "ENG", name: "English", credits: 5, isLab: false },
+  LAN: { code: "LAN", name: "Tamil / Second Language", credits: 5, isLab: false },
+  MAT: { code: "MAT", name: "Mathematics", credits: 7, isLab: false },
+  BMT: { code: "BMT", name: "Business Mathematics", credits: 6, isLab: false },
+  EVS: { code: "EVS", name: "Environmental Studies (EVS)", credits: 8, isLab: false },
+  SCI: { code: "SCI", name: "Science", credits: 7, isLab: false },
+  SLB: { code: "SLB", name: "Science Practical Lab", credits: 2, isLab: true, theoryCode: "SCI" },
+  SSC: { code: "SSC", name: "Social Science", credits: 6, isLab: false },
+  CSC: { code: "CSC", name: "Computer Science", credits: 5, isLab: false },
+  CLB: { code: "CLB", name: "Computer Science Lab", credits: 2, isLab: true, theoryCode: "CSC" },
+  PED: { code: "PED", name: "Physical Education", credits: 1, isLab: false },
+  LIB: { code: "LIB", name: "Library", credits: 1, isLab: false },
+  PHY: { code: "PHY", name: "Physics", credits: 6, isLab: false },
+  PLB: { code: "PLB", name: "Physics Lab", credits: 2, isLab: true, theoryCode: "PHY" },
+  CHE: { code: "CHE", name: "Chemistry", credits: 6, isLab: false },
+  CHB: { code: "CHB", name: "Chemistry Lab", credits: 2, isLab: true, theoryCode: "CHE" },
+  BIO: { code: "BIO", name: "Biology", credits: 6, isLab: false },
+  BLB: { code: "BLB", name: "Biology Lab", credits: 2, isLab: true, theoryCode: "BIO" },
+  ACC: { code: "ACC", name: "Accountancy", credits: 6, isLab: false },
+  COM: { code: "COM", name: "Commerce", credits: 6, isLab: false },
+  ECO: { code: "ECO", name: "Economics", credits: 6, isLab: false },
+  HIS: { code: "HIS", name: "History", credits: 6, isLab: false }
+};
+
+const RECRUITABLE_SUBJECTS = Object.values(UNIFIED_SUBJECT_MASTER).filter(s => !s.isLab);
+
+const TN_HIGHER_SECONDARY_GROUPS = [
+  { key: "Group-Ia", shortCode: "G1A", label: "Group I a — Physics, Chemistry, Computer Science, Maths" },
+  { key: "Group-Ib", shortCode: "G1B", label: "Group I b — Physics, Chemistry, Biology, Maths" },
+  { key: "Group-IIIa", shortCode: "G3A", label: "Group III a — Computer Science, Economics, Commerce, Accountancy" },
+  { key: "Group-IIIb", shortCode: "G3B", label: "Group III b — Economics, Commerce, Accountancy, Business Maths" },
+  { key: "Group-IIIc", shortCode: "G3C", label: "Group III c — History, Economics, Commerce, Accountancy" }
+];
+
+const CLASS_TRACK_DEFINITIONS = (() => {
+  const list = [];
+  for (let g = 1; g <= 10; g++) {
+    list.push({ trackKey: `${g}`, grade: g, stage: getStageForGrade(g), stream: "", streamShort: "", displayName: `Class ${g}` });
+  }
+  [11, 12].forEach(g => {
+    TN_HIGHER_SECONDARY_GROUPS.forEach(grp => {
+      list.push({ trackKey: `${g}-${grp.key}`, grade: g, stage: "HigherSecondary", stream: grp.key, streamShort: grp.shortCode, displayName: `Class ${g} — ${grp.label}` });
+    });
+  });
+  return list;
+})();
+
+function getAuthorizedSubjectsForTrack(gradeNum, stream) {
+  const g = parseInt(gradeNum, 10), M = UNIFIED_SUBJECT_MASTER;
+  if (g <= 5) return [{ ...M.MAT, credits: 9 }, { ...M.EVS, credits: 8 }, { ...M.ENG, credits: 5 }, { ...M.LAN, credits: 5 }, { ...M.CSC, credits: 2 }, { ...M.PED, credits: 2 }, { ...M.LIB, credits: 1 }];
+  if (g <= 9) return [{ ...M.MAT, credits: 8 }, { ...M.SCI, credits: 7 }, { ...M.SSC, credits: 7 }, { ...M.ENG, credits: 5 }, { ...M.LAN, credits: 5 }, { ...M.CSC, credits: 2 }, { ...M.PED, credits: 2 }, { ...M.LIB, credits: 1 }];
+  if (g === 10) return [{ ...M.MAT, credits: 8 }, { ...M.SCI, credits: 6 }, { ...M.SLB, credits: 2 }, { ...M.SSC, credits: 6 }, { ...M.ENG, credits: 5 }, { ...M.LAN, credits: 5 }, { ...M.CSC, credits: 2 }, { ...M.PED, credits: 2 }, { ...M.LIB, credits: 1 }];
+  if (stream === "Group-Ia") return [{ ...M.LAN, credits: 4 }, { ...M.ENG, credits: 4 }, { ...M.PHY, credits: 6 }, { ...M.PLB, credits: 2 }, { ...M.CHE, credits: 6 }, { ...M.CHB, credits: 2 }, { ...M.CSC, credits: 5 }, { ...M.CLB, credits: 2 }, { ...M.MAT, credits: 7 }, { ...M.PED, credits: 1 }, { ...M.LIB, credits: 1 }];
+  if (stream === "Group-Ib") return [{ ...M.LAN, credits: 4 }, { ...M.ENG, credits: 4 }, { ...M.PHY, credits: 5 }, { ...M.PLB, credits: 2 }, { ...M.CHE, credits: 5 }, { ...M.CHB, credits: 2 }, { ...M.BIO, credits: 6 }, { ...M.BLB, credits: 2 }, { ...M.MAT, credits: 6 }, { ...M.PED, credits: 1 }, { ...M.LIB, credits: 1 }];
+  if (stream === "Group-IIIa") return [{ ...M.LAN, credits: 4 }, { ...M.ENG, credits: 4 }, { ...M.CSC, credits: 5 }, { ...M.CLB, credits: 2 }, { ...M.ECO, credits: 6 }, { ...M.COM, credits: 6 }, { ...M.ACC, credits: 7 }, { ...M.PED, credits: 1 }, { ...M.LIB, credits: 1 }];
+  if (stream === "Group-IIIb") return [{ ...M.LAN, credits: 4 }, { ...M.ENG, credits: 4 }, { ...M.ECO, credits: 6 }, { ...M.COM, credits: 6 }, { ...M.ACC, credits: 7 }, { ...M.BMT, credits: 6 }, { ...M.PED, credits: 1 }, { ...M.LIB, credits: 1 }];
+  return [{ ...M.LAN, credits: 4 }, { ...M.ENG, credits: 4 }, { ...M.HIS, credits: 6 }, { ...M.ECO, credits: 6 }, { ...M.COM, credits: 6 }, { ...M.ACC, credits: 7 }, { ...M.PED, credits: 1 }, { ...M.LIB, credits: 1 }];
+}
+
+function getSortedTrackKeys() {
+  return Object.keys(state.grades).sort((a, b) => {
+    const idxA = CLASS_TRACK_DEFINITIONS.findIndex(d => d.trackKey === a), idxB = CLASS_TRACK_DEFINITIONS.findIndex(d => d.trackKey === b);
+    return (idxA !== -1 && idxB !== -1) ? (idxA - idxB) : a.localeCompare(b);
+  });
+}
+
+const STORAGE_KEY = "psm_group_schools_v17";
+
+function createBlankState() {
+  return {
+    settings: {
+      allowStudentBiodataEdit: false,
+      spotlight: "Welcome to PSM Group of Schools • Tamil Nadu Higher Secondary Groups I a, I b, III a, III b & III c (with Compulsory Tamil/Second Language & English) • Generalized & Per-Class Student Range Controls."
+    },
+    users: [
+      { id: "ADM01", role: "admin", name: "System Administrator", username: "admin", password: "Admin@123", email: "admin@psmschools.edu.in" },
+      { id: "COE01", role: "coe", name: "Controller of Examinations", username: "coe", password: "Coe@123", email: "coe@psmschools.edu.in" },
+      { id: "OFF01", role: "office", name: "Administrative Office", username: "office", password: "Office@123", email: "office@psmschools.edu.in" }
+    ],
+    admissionCounter: 1001,
+    feeHeads: [
+      { key: "tuition", label: "Tuition Fee", defaultVal: 24000 },
+      { key: "exam", label: "Exam Fee", defaultVal: 2500 },
+      { key: "labLib", label: "Lab & Library Fee", defaultVal: 3500 },
+      { key: "sports", label: "Sports & Campus Fee", defaultVal: 2000 }
+    ],
+    academicCalendar: {}, rooms: [], grades: {}, classes: [], allocations: [], weeklyTimetable: {},
+    attendance: [], peLogs: [], debarOverrides: {}, questionPapers: [], examMarks: [], examTimetable: [],
+    invigilators: [], seatingPlan: [], hallTicketsPublished: false, feePayments: [], schoolExpenses: [],
+    bonafideRequests: [], helpdeskQueries: [], announcements: [], notifications: [], events: [], certificates: []
+  };
+}
+
+let state = loadState();
+let currentUser = null, adminSessionUser = null, activeTab = "", pendingLoginRole = "admin";
+let calViewYear = 2026, calViewMonth = 10;
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw), blank = createBlankState();
+      return { ...blank, ...parsed, settings: { ...blank.settings, ...(parsed.settings || {}) } };
+    }
+  } catch (e) {}
+  return createBlankState();
+}
+
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); refreshLandingMetrics(); updateNotifBell(); }
+function pushNotification(userId, title, body) { state.notifications.unshift({ id: `NTF_${Date.now()}_${trueRandomInt(99999)}`, userId, title, body, createdAt: new Date().toLocaleString(), read: false }); }
+
+function resetAllDataAsAdmin() {
+  if (!currentUser || currentUser.role !== "admin") return;
+  if (!confirm("Reset the entire portal back to a clean zero-mock blank state?")) return;
+  state = createBlankState(); saveState(); renderWorkspace(); alert("System reset to clean blank state.");
+}
+
+function exportAllPortalData() {
+  if (!currentUser || currentUser.role !== "admin") return;
+  const backupEnvelope = { app: SCHOOL_NAME, schemaVersion: 17, exportedAt: new Date().toISOString(), data: state };
+  const blob = new Blob([JSON.stringify(backupEnvelope, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob), a = document.createElement("a");
+  a.href = url; a.download = `PSM_GROUP_OF_SCHOOLS_BACKUP_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function importAllPortalData(event) {
+  if (!currentUser || currentUser.role !== "admin") return;
+  const file = event.target.files && event.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const parsed = JSON.parse(e.target.result), importedState = parsed && parsed.data && parsed.users === undefined ? parsed.data : parsed;
+      if (!importedState || !Array.isArray(importedState.users) || !Array.isArray(importedState.classes)) { alert("Invalid backup file format."); event.target.value = ""; return; }
+      const blank = createBlankState();
+      state = { ...blank, ...importedState, settings: { ...blank.settings, ...(importedState.settings || {}) } };
+      if (!state.users.some(u => u.role === "admin")) state.users.unshift(blank.users[0]);
+      if (!state.users.some(u => u.role === "office")) state.users.push(blank.users[2]);
+      currentUser = state.users.find(u => u.id === currentUser.id && u.role === "admin") || state.users.find(u => u.role === "admin");
+      saveState(); renderWorkspace(); alert("Backup restored successfully!");
+    } catch (err) { alert("Failed to read backup file: " + err.message); } finally { event.target.value = ""; }
+  };
+  reader.readAsText(file);
+}
+
+function openLoginModal(role) {
+  pendingLoginRole = role;
+  const meta = {
+    admin: { title: "Administrator Sign In", badge: "PSM SYSTEM GOVERNANCE", sub: "TN Higher Sec Groups I a–III c, range controls & setup", bg: "linear-gradient(135deg, #060b19 0%, #1e293b 100%)" },
+    coe: { title: "Controller of Examinations", badge: "PSM EXAMINATION CELL", sub: "Printable exam papers, mark approvals & invigilator roster", bg: "linear-gradient(135deg, #451a03 0%, #b45309 100%)" },
+    office: { title: "Administrative Office", badge: "PSM OFFICE & FINANCE", sub: "Attendance OD/ML control, fee receipts, admissions & helpdesk", bg: "linear-gradient(135deg, #2e1065 0%, #6d28d9 100%)" },
+    faculty: { title: "Faculty Portal Sign In", badge: "PSM ACADEMIC FACULTY", sub: "Personal period timetable, P/A attendance & mark entry", bg: "linear-gradient(135deg, #064e3b 0%, #047857 100%)" },
+    student: { title: "Student Portal Sign In", badge: "PSM STUDENT ACCESS", sub: "Attendance, credit-weighted timetable, hall tickets & report cards", bg: "linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%)" }
+  }[role];
+  document.getElementById("loginModalTitle").textContent = meta.title;
+  document.getElementById("loginRoleBadge").textContent = meta.badge;
+  document.getElementById("loginModalSubtitle").textContent = meta.sub;
+  document.getElementById("loginBannerBg").style.background = meta.bg;
+  const passInp = document.getElementById("loginPassword");
+  passInp.type = "password"; document.getElementById("loginUsername").value = ""; passInp.value = "";
+  document.getElementById("loginError").style.display = "none"; document.getElementById("loginModal").classList.add("open");
+  setTimeout(() => document.getElementById("loginUsername").focus(), 60);
+}
+
+function togglePasswordVisibility() { const inp = document.getElementById("loginPassword"); inp.type = inp.type === "password" ? "text" : "password"; }
+
+function submitLogin() {
+  const uname = document.getElementById("loginUsername").value.trim(), pass = document.getElementById("loginPassword").value.trim();
+  const errBox = document.getElementById("loginError"), errText = document.getElementById("loginErrorText");
+  if (!uname || !pass) { errText.textContent = "Please enter both your Institutional ID/Username and Password."; errBox.style.display = "flex"; return; }
+  const user = state.users.find(u => (u.username.toLowerCase() === uname.toLowerCase() || (u.regNo && u.regNo.toLowerCase() === uname.toLowerCase()) || (u.admissionNo && u.admissionNo.toLowerCase() === uname.toLowerCase())) && u.password === pass && u.role === pendingLoginRole);
+  if (!user) { errText.textContent = "Authentication failed. Check your credentials for the selected role."; errBox.style.display = "flex"; return; }
+  closeModal("loginModal"); adminSessionUser = null; loginAs(user);
+}
+
+function adminAutomatedLogin(userId) { if (!currentUser || currentUser.role !== "admin") return; const t = state.users.find(u => u.id === userId); if (t) { adminSessionUser = currentUser; loginAs(t); } }
+function returnToAdminSession() { if (!adminSessionUser) return; const adm = state.users.find(u => u.id === adminSessionUser.id) || adminSessionUser; adminSessionUser = null; loginAs(adm); }
+
+function loginAs(user) {
+  currentUser = user;
+  document.getElementById("landingView").style.display = "none";
+  document.getElementById("workspaceShell").style.display = "flex";
+  document.getElementById("logoutBtn").style.display = "inline-flex";
+  document.getElementById("notifBellBtn").style.display = "inline-flex";
+  document.getElementById("hamburgerToggleBtn").style.display = "inline-flex";
+  document.getElementById("returnAdminBtn").style.display = (adminSessionUser && user.role !== "admin") ? "inline-flex" : "none";
+  document.getElementById("headerSubContext").textContent = `${user.role.toUpperCase()} Portal • ${user.name}`;
+  document.getElementById("sidebarUserName").textContent = user.name;
+  const stageTag = user.stage ? ` • ${getDisplayStageLabel(user)}` : "";
+  document.getElementById("sidebarUserRole").textContent = `${user.role.toUpperCase()}${stageTag} • ${user.admissionNo || user.regNo || user.id}`;
+  updateNotifBell();
+  const menus = getRoleMenus(user.role);
+  activeTab = menus[0].id;
+  renderNav(); renderWorkspace();
+}
+
+function logout() { currentUser = null; adminSessionUser = null; showLanding(); }
+
+function showLanding() {
+  document.getElementById("landingView").style.display = "block";
+  document.getElementById("workspaceShell").style.display = "none";
+  document.getElementById("logoutBtn").style.display = "none";
+  document.getElementById("notifBellBtn").style.display = "none";
+  document.getElementById("hamburgerToggleBtn").style.display = "none";
+  document.getElementById("returnAdminBtn").style.display = "none";
+  document.getElementById("headerSubContext").textContent = "Tamil Nadu State Board Higher Secondary & School ERP";
+  closeMobileSidebar(); refreshLandingMetrics();
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+
+function toggleAppSidebar() {
+  const sb = document.getElementById("appSidebar"), ov = document.getElementById("sidebarOverlay");
+  if (window.innerWidth <= 860) { const opening = !sb.classList.contains("mobile-open"); sb.classList.toggle("mobile-open", opening); ov.classList.toggle("open", opening); }
+  else sb.classList.toggle("desktop-collapsed");
+}
+
+function closeMobileSidebar() { document.getElementById("appSidebar").classList.remove("mobile-open"); document.getElementById("sidebarOverlay").classList.remove("open"); }
+
+function getFacultyScheduledSessions(facultyId, dateStr) {
+  const policy = getCalendarDayPolicy(dateStr);
+  if (!policy.isWorking || !policy.followDay) return [];
+  const dayKey = policy.followDay, sessions = [];
+  Object.keys(state.weeklyTimetable).forEach(classId => {
+    (state.weeklyTimetable[classId][dayKey] || []).forEach((slot, idx) => {
+      if (slot && slot.facultyId === facultyId) {
+        const periodNo = idx + 1;
+        const alreadyMarked = state.attendance.some(a => a.date === dateStr && a.classId === classId && a.subjectCode === slot.subjectCode && Number(a.periodNo) === periodNo);
+        sessions.push({ dateStr, followDay: dayKey, classId, subjectCode: slot.subjectCode, subjectName: slot.subjectName, periodNo, marked: alreadyMarked });
+      }
+    });
+  });
+  return sessions;
+}
+
+function getFacultyIncompleteAlerts(facultyId) {
+  const uniqueDates = [...new Set(["2026-11-19", new Date().toISOString().slice(0, 10)])], pending = [];
+  uniqueDates.forEach(dStr => { getFacultyScheduledSessions(facultyId, dStr).forEach(s => { if (!s.marked) pending.push(s); }); });
+  return pending;
+}
+
+function updateNotifBell() {
+  if (!currentUser) return;
+  const unread = state.notifications.filter(n => n.userId === currentUser.id && !n.read).length;
+  const pendingAtt = currentUser.role === "faculty" ? getFacultyIncompleteAlerts(currentUser.id).length : 0;
+  const badge = document.getElementById("notifBadgeCount");
+  if (badge) badge.textContent = unread + pendingAtt;
+}
+
+function openNotificationsModal() {
+  if (!currentUser) return;
+  const mine = state.notifications.filter(n => n.userId === currentUser.id);
+  const pendingAtt = currentUser.role === "faculty" ? getFacultyIncompleteAlerts(currentUser.id) : [];
+  const myAnnouncements = state.announcements.filter(a => a.targetType === "ALL" || (a.targetType === "ROLE" && a.targetRole === currentUser.role) || (a.targetType === "INDIVIDUAL" && a.targetUserId === currentUser.id));
+  mine.forEach(n => { n.read = true; }); saveState();
+
+  document.getElementById("inspectModalTitle").textContent = "Alerts & Official Messages";
+  document.getElementById("inspectModalBody").innerHTML = `
+    ${pendingAtt.length ? `<div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:12px; padding:14px; margin-bottom:14px;"><strong style="color:#be123c; display:block; margin-bottom:8px;">Incomplete Attendance Sessions (${pendingAtt.length} Pending)</strong>${pendingAtt.map(p => `<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:6px 0; border-bottom:1px solid #fecdd3; font-size:0.84rem;"><span><strong>${p.dateStr}</strong> (${p.followDay} TT) • <strong>${p.classId}</strong> • Period ${p.periodNo} (${p.subjectName})</span><button class="btn btn-sm btn-danger" onclick="closeModal('inspectModal'); jumpToFacultyAttendance('${p.dateStr}','${p.classId}','${p.subjectCode}',${p.periodNo})">Fill Now</button></div>`).join("")}</div>` : ""}
+    <h4 style="color:var(--navy-900); margin-bottom:8px;">Direct Notifications (${mine.length})</h4>
+    ${mine.length ? mine.map(n => `<div style="border:1px solid #e2e8f0; border-radius:10px; padding:10px; margin-bottom:8px; background:#f8fafc;"><div style="display:flex; justify-content:space-between; gap:8px;"><strong>${n.title}</strong><span style="font-size:0.74rem; color:var(--muted);">${n.createdAt}</span></div><p style="font-size:0.84rem; margin-top:4px;">${n.body}</p></div>`).join("") : `<div class="empty-state" style="margin-bottom:14px;">No direct notifications.</div>`}
+    <h4 style="color:var(--navy-900); margin:12px 0 8px;">Broadcast Announcements (${myAnnouncements.length})</h4>
+    ${myAnnouncements.length ? myAnnouncements.map(a => `<div style="border:1px solid #bfdbfe; border-radius:10px; padding:10px; margin-bottom:8px; background:#eff6ff;"><div style="display:flex; justify-content:space-between; gap:8px;"><strong>${a.title}</strong><span class="badge badge-blue">${a.targetType}</span></div><p style="font-size:0.84rem; margin-top:4px;">${a.body}</p><div style="font-size:0.74rem; color:var(--muted); margin-top:4px;">${a.sender} • ${a.createdAt}</div></div>`).join("") : `<div class="empty-state">No broadcasts posted yet.</div>`}
+  `;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function refreshLandingMetrics() {
+  document.getElementById("landGrades").textContent = Object.keys(state.grades).length;
+  document.getElementById("landClasses").textContent = state.classes.length;
+  document.getElementById("landStudents").textContent = state.users.filter(u => u.role === "student").length;
+  document.getElementById("landFaculty").textContent = state.users.filter(u => u.role === "faculty").length;
+  document.getElementById("spotlightText").textContent = state.settings.spotlight;
+
+  const evBox = document.getElementById("landingEventsList"), publicAnnouncements = state.announcements.filter(a => a.targetType === "ALL");
+  if (!state.events.length && !publicAnnouncements.length) {
+    evBox.innerHTML = `<div class="empty-state">No public campus announcements or sports events posted yet.</div>`;
+  } else {
+    evBox.innerHTML = `
+      ${publicAnnouncements.slice(0, 4).map(a => `<div style="padding:8px 0; border-bottom:1px solid #e2e8f0;"><span class="badge badge-purple">OFFICE NOTICE</span> <strong>${a.title}</strong><div style="font-size:0.8rem; color:#334155; margin-top:2px;">${a.body}</div></div>`).join("")}
+      ${state.events.map(ev => `<div style="padding:8px 0; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; gap:8px;"><div><strong>${ev.title}</strong> <span class="badge badge-amber">${ev.category}</span><div style="font-size:0.78rem; color:var(--muted);">${new Date(ev.startDateTime).toLocaleString()} • ${ev.venue}</div></div><span class="badge badge-blue">${ev.participants.length}/${ev.maxSlots} Joined</span></div>`).join("")}
+    `;
+  }
+}
+
+function getRoleMenus(role) {
+  if (role === "admin") return [
+    { id: "adm-overview", icon: ICONS.dashboard, label: "Overview & Backup" },
+    { id: "adm-calendar", icon: ICONS.calendar, label: "Indian Academic Calendar" },
+    { id: "adm-bulk-matrix", icon: ICONS.layers, label: "Bulk Classes & Stage Faculty" },
+    { id: "adm-credits", icon: ICONS.sliders, label: "Subject Credits & Labs" },
+    { id: "adm-accounts", icon: ICONS.users, label: "Manage Accounts & Auto-Login" },
+    { id: "adm-faculty", icon: ICONS.edit, label: "Faculty Load & Lab Linking" },
+    { id: "adm-fees-grid", icon: ICONS.wallet, label: "Grade & Group Fee Ledger" },
+    { id: "adm-timetable", icon: ICONS.clock, label: "Credit-Weighted 8-Period TT" },
+    { id: "adm-events-certs", icon: ICONS.award, label: "Events & Certificates" }
+  ];
+  if (role === "office") {
+    const openQueries = state.helpdeskQueries.filter(q => q.status === "Open").length, pendingBona = state.bonafideRequests.filter(b => b.status === "Pending Office").length;
+    return [
+      { id: "off-attendance", icon: ICONS.check, label: "Attendance Edit & OD / ML" },
+      { id: "off-fees", icon: ICONS.wallet, label: "Fee Collection & Receipts" },
+      { id: "off-admissions", icon: ICONS.users, label: "New Admissions & Records" },
+      { id: "off-pe-logs", icon: ICONS.shield, label: `PE Discipline & Late (${state.peLogs.length})` },
+      { id: "off-expenses", icon: ICONS.file, label: "School Expense Ledger" },
+      { id: "off-bonafide", icon: ICONS.award, label: `Bonafide Requests (${pendingBona})` },
+      { id: "off-comms", icon: ICONS.message, label: `Messages & Helpdesk (${openQueries})` }
+    ];
+  }
+  if (role === "faculty") {
+    const isPE = currentUser && currentUser.subjectCode === "PED", pendingAtt = currentUser ? getFacultyIncompleteAlerts(currentUser.id).length : 0;
+    const list = [
+      { id: "fac-timetable", icon: ICONS.clock, label: "My Period Timetable & Sections" },
+      { id: "fac-calendar", icon: ICONS.calendar, label: "Academic Calendar" },
+      { id: "fac-attendance", icon: ICONS.check, label: `Mark P / A Attendance ${pendingAtt ? `(${pendingAtt} Due)` : ""}` },
+      { id: "fac-qpaper", icon: ICONS.file, label: "Question Paper & Exam PDF" },
+      { id: "fac-marks", icon: ICONS.award, label: "Exam Marks & Re-Exam" },
+      { id: "fac-helpdesk", icon: ICONS.message, label: "Ask Office / Helpdesk" }
+    ];
+    if (isPE) list.splice(3, 0, { id: "fac-pe-desk", icon: ICONS.shield, label: "All-School PE Discipline & Late" });
+    return list;
+  }
+  if (role === "coe") return [
+    { id: "coe-approvals", icon: ICONS.check, label: "QP (Exam PDF) & Marks Vault" },
+    { id: "coe-calendar", icon: ICONS.calendar, label: "Academic Calendar" },
+    { id: "coe-reexam", icon: ICONS.shield, label: "OD / ML Re-Exam Approvals" },
+    { id: "coe-exam-tt", icon: ICONS.clock, label: "Exam TT & Upload Deadlines" },
+    { id: "coe-invigilators", icon: ICONS.users, label: "Exam Invigilator Allotment" },
+    { id: "coe-seating", icon: ICONS.layers, label: "Random Room Seating" },
+    { id: "coe-debar", icon: ICONS.file, label: "Attendance & Debarment" }
+  ];
+  return [
+    { id: "stu-profile", icon: ICONS.users, label: "Profile & Biodata" },
+    { id: "stu-calendar", icon: ICONS.calendar, label: "Academic Calendar" },
+    { id: "stu-academics", icon: ICONS.clock, label: "Attendance & 8-Period TT" },
+    { id: "stu-exams", icon: ICONS.file, label: "Printable Hall Ticket & Report Card" },
+    { id: "stu-fees", icon: ICONS.wallet, label: "Fee Summary & Printable Receipt" },
+    { id: "stu-bonafide", icon: ICONS.message, label: "Bonafide & Ask Office" },
+    { id: "stu-events", icon: ICONS.award, label: "Sports, Events & Certs" }
+  ];
+}
+
+function renderNav() {
+  const menus = getRoleMenus(currentUser.role);
+  document.getElementById("sidebarNav").innerHTML = menus.map(m => `<button class="nav-item ${activeTab === m.id ? "active" : ""}" onclick="switchTab('${m.id}')">${m.icon}<span>${m.label}</span></button>`).join("");
+}
+
+function switchTab(id) { activeTab = id; closeMobileSidebar(); renderNav(); renderWorkspace(); }
+
+function getFacultyMaxSections(faculty) { return TWO_TIER_SPECIALIST_CODES.has(faculty.subjectCode) ? 36 : 4; }
+
+function syncLabsFromTheoryAllocations() {
+  state.allocations = state.allocations.filter(a => !UNIFIED_SUBJECT_MASTER[a.subjectCode]?.isLab);
+  const labAllocsToAdd = [];
+  state.classes.forEach(cls => {
+    const gObj = state.grades[cls.trackKey]; if (!gObj) return;
+    gObj.subjects.forEach(sub => {
+      if (sub.isLab) {
+        const theoryCode = sub.theoryCode || LAB_TO_THEORY_MAP[sub.code];
+        const theoryAlloc = state.allocations.find(a => a.classId === cls.id && a.subjectCode === theoryCode);
+        if (theoryAlloc) labAllocsToAdd.push({ id: `ALC_${cls.id}_${sub.code}`, classId: cls.id, trackKey: cls.trackKey, grade: cls.grade, stream: cls.stream, subjectCode: sub.code, subjectName: sub.name, isLab: true, facultyId: theoryAlloc.facultyId });
+      }
+    });
+  });
+  state.allocations.push(...labAllocsToAdd);
+}
+
+function checkFacultyAssignmentClash(facultyId, targetClassId, subjectCode) {
+  const fac = state.users.find(u => u.id === facultyId), cls = state.classes.find(c => c.id === targetClassId);
+  if (!fac || !cls) return "Invalid faculty or class section.";
+  if (UNIFIED_SUBJECT_MASTER[subjectCode]?.isLab) return `LINKED LAB RULE: Lab subjects (${subjectCode}) are automatically assigned to whichever teacher handles the theory subject (${LAB_TO_THEORY_MAP[subjectCode]}) for ${targetClassId}.`;
+  if (!isFacultyStageEligibleForGrade(fac.stage, cls.grade, fac.subjectCode)) return `STAGE VIOLATION: ${fac.name} (${getDisplayStageLabel(fac)}) cannot be assigned to ${cls.id} (Grade ${cls.grade}).`;
+  const maxSecs = getFacultyMaxSections(fac);
+  const otherTheoryAllocs = state.allocations.filter(a => a.facultyId === facultyId && !UNIFIED_SUBJECT_MASTER[a.subjectCode]?.isLab && !(a.classId === targetClassId && a.subjectCode === subjectCode));
+  if (otherTheoryAllocs.length >= maxSecs) return `CAPACITY CAP EXCEEDED: ${fac.name} already handles ${otherTheoryAllocs.length}/${maxSecs} sections.`;
+
+  const linkedLabCodes = Object.keys(LAB_TO_THEORY_MAP).filter(lCode => LAB_TO_THEORY_MAP[lCode] === subjectCode), codesToVerify = [subjectCode, ...linkedLabCodes];
+  if (Object.keys(state.weeklyTimetable).length > 0 && state.weeklyTimetable[targetClassId]) {
+    for (const day of ["Mon", "Tue", "Wed", "Thu", "Fri"]) {
+      const targetDaySlots = state.weeklyTimetable[targetClassId][day] || [];
+      for (let p = 0; p < targetDaySlots.length; p++) {
+        if (targetDaySlots[p] && codesToVerify.includes(targetDaySlots[p].subjectCode)) {
+          for (const otherCid of Object.keys(state.weeklyTimetable)) {
+            if (otherCid === targetClassId) continue;
+            const otherSlot = (state.weeklyTimetable[otherCid][day] || [])[p];
+            if (otherSlot && otherSlot.facultyId === facultyId) return `TIMETABLE CLASH DETECTED: ${fac.name} is already teaching ${otherSlot.subjectCode} in Section ${otherCid} on ${day} Period ${p + 1}.`;
+          }
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function strictRandomFacultyAllocation(silent = false) {
+  if (!state.classes.length) return !silent && alert("Create classes first.");
+  const faculty = state.users.filter(u => u.role === "faculty");
+  if (!faculty.length) return !silent && alert("Create stage-wise faculty accounts first.");
+
+  state.allocations = [];
+  const loadMap = {}; faculty.forEach(f => { loadMap[f.id] = 0; });
+  const slots = [];
+  trueShuffle(state.classes).forEach(cls => {
+    const gObj = state.grades[cls.trackKey]; if (!gObj) return;
+    trueShuffle(gObj.subjects.filter(s => !s.isLab)).forEach(sub => slots.push({ cls, sub }));
+  });
+
+  slots.forEach(({ cls, sub }) => {
+    let candidates = faculty.filter(f => f.subjectCode === sub.code && isFacultyStageEligibleForGrade(f.stage, cls.grade, f.subjectCode) && loadMap[f.id] < getFacultyMaxSections(f));
+    if (!TWO_TIER_SPECIALIST_CODES.has(sub.code)) {
+      if (cls.grade >= 11) { const hsOnly = candidates.filter(f => f.stage === "HigherSecondary"); if (hsOnly.length) candidates = hsOnly; }
+      else if (cls.grade >= 9) { const secOnly = candidates.filter(f => f.stage === "Secondary"); if (secOnly.length) candidates = secOnly; }
+    }
+    if (candidates.length) {
+      const minLoad = Math.min(...candidates.map(f => loadMap[f.id]));
+      const lowestPool = candidates.filter(f => loadMap[f.id] === minLoad);
+      const chosen = lowestPool[trueRandomInt(lowestPool.length)];
+      loadMap[chosen.id]++;
+      state.allocations.push({ id: `ALC_${cls.id}_${sub.code}`, classId: cls.id, trackKey: cls.trackKey, grade: cls.grade, stream: cls.stream, subjectCode: sub.code, subjectName: sub.name, isLab: false, facultyId: chosen.id });
+    }
+  });
+
+  syncLabsFromTheoryAllocations();
+  if (!silent) { saveState(); renderWorkspace(); }
+}
+
+function openEditFacultyAssignmentsModal(facultyId) {
+  const fac = state.users.find(u => u.id === facultyId); if (!fac) return;
+  const maxSecs = getFacultyMaxSections(fac), currentTheoryAssigned = state.allocations.filter(a => a.facultyId === fac.id && !a.isLab);
+  const eligibleSections = state.classes.filter(c => { const gObj = state.grades[c.trackKey]; return isFacultyStageEligibleForGrade(fac.stage, c.grade, fac.subjectCode) && gObj && gObj.subjects.some(s => s.code === fac.subjectCode); });
+
+  document.getElementById("inspectModalTitle").textContent = `Edit Assigned Sections — ${fac.name} (${fac.subjectCode})`;
+  document.getElementById("inspectModalBody").innerHTML = `
+    <div style="margin-bottom:12px; font-size:0.86rem;"><strong>Stage Qualification:</strong> <span class="badge badge-purple">${getDisplayStageLabel(fac)}</span> | <strong>Subject:</strong> <span class="badge badge-blue">${fac.subjectCode}</span> ${fac.subjectName} | <strong>Theory Load:</strong> <span class="badge ${currentTheoryAssigned.length <= maxSecs ? "badge-green" : "badge-amber"}">${currentTheoryAssigned.length} / ${maxSecs} Sections</span></div>
+    <div id="facEditClashAlert" class="login-error-box" style="margin-bottom:12px;">${ICONS.alert}<span id="facEditClashText"></span></div>
+    ${eligibleSections.length ? `<div class="table-wrap" style="margin-bottom:14px;"><table><thead><tr><th>Assign</th><th>Section</th><th>Grade / Group</th><th>Current Teacher</th></tr></thead><tbody>${eligibleSections.map(cls => { const curAlloc = state.allocations.find(a => a.classId === cls.id && a.subjectCode === fac.subjectCode), isMine = curAlloc && curAlloc.facultyId === fac.id, curTeacher = curAlloc ? state.users.find(u => u.id === curAlloc.facultyId) : null; return `<tr><td><input type="checkbox" class="tbl-chk" ${isMine ? "checked" : ""} onchange="toggleSingleFacultyClassAssignment('${fac.id}','${cls.id}','${fac.subjectCode}', this)" /></td><td><strong>${cls.id}</strong></td><td>${state.grades[cls.trackKey]?.displayName || cls.grade}</td><td>${isMine ? `<span class="badge badge-green">Assigned to ${fac.name}</span>` : (curTeacher ? `<span class="badge badge-gray">${curTeacher.name}</span>` : `<span class="badge badge-amber">Unassigned</span>`)}</td></tr>`; }).join("")}</tbody></table></div>` : `<div class="empty-state">No eligible stage sections offer subject ${fac.subjectCode}.</div>`}
+    <button class="btn btn-navy" onclick="closeModal('inspectModal'); renderWorkspace();">Done</button>
+  `;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function toggleSingleFacultyClassAssignment(facultyId, classId, subjectCode, checkboxEl) {
+  const errBox = document.getElementById("facEditClashAlert"), errText = document.getElementById("facEditClashText");
+  errBox.style.display = "none";
+  const fac = state.users.find(u => u.id === facultyId), cls = state.classes.find(c => c.id === classId); if (!fac || !cls) return;
+  if (checkboxEl.checked) {
+    const clashMsg = checkFacultyAssignmentClash(facultyId, classId, subjectCode);
+    if (clashMsg) { checkboxEl.checked = false; errText.textContent = clashMsg; errBox.style.display = "flex"; return; }
+    state.allocations = state.allocations.filter(a => !(a.classId === classId && a.subjectCode === subjectCode));
+    state.allocations.push({ id: `ALC_${classId}_${subjectCode}`, classId, trackKey: cls.trackKey, grade: cls.grade, stream: cls.stream, subjectCode, subjectName: fac.subjectName, isLab: false, facultyId: fac.id });
+  } else state.allocations = state.allocations.filter(a => !(a.classId === classId && a.subjectCode === subjectCode && a.facultyId === facultyId));
+
+  syncLabsFromTheoryAllocations();
+  if (state.weeklyTimetable[classId]) {
+    ["Mon", "Tue", "Wed", "Thu", "Fri"].forEach(day => {
+      (state.weeklyTimetable[classId][day] || []).forEach(slot => {
+        const curAlloc = state.allocations.find(a => a.classId === classId && a.subjectCode === slot.subjectCode);
+        if (curAlloc) { const tObj = state.users.find(u => u.id === curAlloc.facultyId); slot.facultyId = curAlloc.facultyId; slot.facultyName = tObj ? tObj.name : "Staff"; }
+      });
+    });
+  }
+  saveState(); openEditFacultyAssignmentsModal(facultyId);
+}
+
+function buildCreditWeightedQuotas(subjects, totalWeeklySlots = 40) {
+  const totalCredits = subjects.reduce((sum, s) => sum + (Number(s.credits) || 1), 0);
+  if (!totalCredits) return { labPairs: [], singlePeriods: [] };
+  const quotas = subjects.map(s => {
+    const exact = ((Number(s.credits) || 1) / totalCredits) * totalWeeklySlots;
+    let count = Math.floor(exact);
+    if (s.isLab && count < 2) count = 2;
+    if (s.isLab && count % 2 !== 0) count++;
+    return { sub: s, count, frac: exact - Math.floor(exact) };
+  });
+  let assigned = quotas.reduce((sum, q) => sum + q.count, 0);
+  const nonLabs = quotas.filter(q => !q.sub.isLab).sort((a, b) => (b.frac - a.frac) || (b.sub.credits - a.sub.credits));
+  let idx = 0;
+  while (assigned < totalWeeklySlots && nonLabs.length) { nonLabs[idx % nonLabs.length].count++; assigned++; idx++; }
+  while (assigned > totalWeeklySlots && nonLabs.length) { const target = nonLabs.find(q => q.count > 1); if (!target) break; target.count--; assigned--; }
+  const labPairs = [], singlePeriods = [];
+  quotas.forEach(q => {
+    if (q.sub.isLab) { for (let i = 0; i < Math.max(1, Math.floor(q.count / 2)); i++) labPairs.push(q.sub); }
+    else { for (let i = 0; i < q.count; i++) singlePeriods.push(q.sub); }
+  });
+  return { labPairs: trueShuffle(labPairs), singlePeriods: trueShuffle(singlePeriods) };
+}
+
+function generateStrictRandomWeeklyTimetable() {
+  if (!state.allocations.length) return alert("Run Faculty Allocation first.");
+  syncLabsFromTheoryAllocations();
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"], validLabStartSlots = [0, 2, 4, 6], busyFaculty = {};
+  state.weeklyTimetable = {};
+  const classQuotas = {};
+  state.classes.forEach(cls => {
+    const gObj = state.grades[cls.trackKey]; if (!gObj) return;
+    classQuotas[cls.id] = buildCreditWeightedQuotas(gObj.subjects, 40);
+    state.weeklyTimetable[cls.id] = { Mon: Array(8).fill(null), Tue: Array(8).fill(null), Wed: Array(8).fill(null), Thu: Array(8).fill(null), Fri: Array(8).fill(null) };
+  });
+
+  trueShuffle(state.classes).forEach(cls => {
+    const q = classQuotas[cls.id]; if (!q || !q.labPairs.length) return;
+    const clsAllocs = state.allocations.filter(a => a.classId === cls.id), usedLabDays = new Set();
+    q.labPairs.forEach(labSub => {
+      const alloc = clsAllocs.find(a => a.subjectCode === labSub.code), fid = alloc ? alloc.facultyId : null, fac = fid ? state.users.find(u => u.id === fid) : null;
+      const candidateDays = trueShuffle(days).sort((a, b) => (usedLabDays.has(a) ? 1 : 0) - (usedLabDays.has(b) ? 1 : 0));
+      let placed = false;
+      for (const day of candidateDays) {
+        for (const pStart of trueShuffle(validLabStartSlots)) {
+          if (state.weeklyTimetable[cls.id][day][pStart] === null && state.weeklyTimetable[cls.id][day][pStart + 1] === null && (!fid || !busyFaculty[`${day}_${pStart}_${fid}`]) && (!fid || !busyFaculty[`${day}_${pStart + 1}_${fid}`])) {
+            state.weeklyTimetable[cls.id][day][pStart] = { subjectCode: labSub.code, subjectName: `${labSub.name} (Lab P1/2)`, isLab: true, facultyId: fid, facultyName: fac ? fac.name : "Staff" };
+            state.weeklyTimetable[cls.id][day][pStart + 1] = { subjectCode: labSub.code, subjectName: `${labSub.name} (Lab P2/2)`, isLab: true, facultyId: fid, facultyName: fac ? fac.name : "Staff" };
+            if (fid) { busyFaculty[`${day}_${pStart}_${fid}`] = true; busyFaculty[`${day}_${pStart + 1}_${fid}`] = true; }
+            usedLabDays.add(day); placed = true; break;
+          }
+        }
+        if (placed) break;
+      }
+      if (!placed) {
+        for (const day of candidateDays) {
+          for (const pStart of validLabStartSlots) {
+            if (state.weeklyTimetable[cls.id][day][pStart] === null && state.weeklyTimetable[cls.id][day][pStart + 1] === null) {
+              state.weeklyTimetable[cls.id][day][pStart] = { subjectCode: labSub.code, subjectName: `${labSub.name} (Lab P1/2)`, isLab: true, facultyId: fid, facultyName: fac ? fac.name : "Staff" };
+              state.weeklyTimetable[cls.id][day][pStart + 1] = { subjectCode: labSub.code, subjectName: `${labSub.name} (Lab P2/2)`, isLab: true, facultyId: fid, facultyName: fac ? fac.name : "Staff" };
+              placed = true; break;
+            }
+          }
+          if (placed) break;
+        }
+      }
+    });
+  });
+
+  days.forEach(day => {
+    for (let p = 0; p < 8; p++) {
+      trueShuffle(state.classes).forEach(cls => {
+        if (state.weeklyTimetable[cls.id][day][p] !== null) return;
+        const bag = classQuotas[cls.id]?.singlePeriods; if (!bag || !bag.length) return;
+        const clsAllocs = state.allocations.filter(a => a.classId === cls.id), prevSlot = state.weeklyTimetable[cls.id][day][p - 1];
+        let bestIdx = -1;
+        for (let i = 0; i < bag.length; i++) {
+          const cand = bag[i], alloc = clsAllocs.find(a => a.subjectCode === cand.code), fid = alloc ? alloc.facultyId : null;
+          if ((!fid || !busyFaculty[`${day}_${p}_${fid}`]) && !(prevSlot && prevSlot.subjectCode === cand.code)) { bestIdx = i; break; }
+        }
+        if (bestIdx === -1) {
+          for (let i = 0; i < bag.length; i++) {
+            const cand = bag[i], alloc = clsAllocs.find(a => a.subjectCode === cand.code), fid = alloc ? alloc.facultyId : null;
+            if (!fid || !busyFaculty[`${day}_${p}_${fid}`]) { bestIdx = i; break; }
+          }
+        }
+        if (bestIdx === -1) bestIdx = 0;
+        const chosen = bag.splice(bestIdx, 1)[0], alloc = clsAllocs.find(a => a.subjectCode === chosen.code), fid = alloc ? alloc.facultyId : null;
+        if (fid) busyFaculty[`${day}_${p}_${fid}`] = true;
+        const fac = fid ? state.users.find(u => u.id === fid) : null;
+        state.weeklyTimetable[cls.id][day][p] = { subjectCode: chosen.code, subjectName: chosen.name, isLab: false, facultyId: fid, facultyName: fac ? fac.name : "Staff" };
+      });
+    }
+  });
+  saveState(); renderWorkspace();
+}
+
+function renderAcademicCalendarWidget(canEdit) {
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const firstDay = new Date(calViewYear, calViewMonth, 1).getDay(), daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
+  let cellsHtml = "";
+  for (let i = 0; i < firstDay; i++) cellsHtml += `<div class="cal-cell empty"></div>`;
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`, pol = getCalendarDayPolicy(dateStr);
+    let cls = "cal-cell";
+    if (canEdit) cls += " interactive";
+    if (!pol.isWorking) cls += " holiday";
+    else if (new Date(dateStr + "T00:00:00").getDay() === 0 || new Date(dateStr + "T00:00:00").getDay() === 6) cls += " working-wknd";
+    else if (pol.examsOnDay.length) cls += " exam-day";
+    else if (pol.eventsOnDay.length) cls += " event-day";
+    const clickAttr = canEdit ? `onclick="openEditCalendarDayModal('${dateStr}')"` : "";
+    cellsHtml += `<div class="${cls}" ${clickAttr}><div class="cal-day-num"><span>${d}</span>${pol.isWorking ? `<span class="badge badge-blue" style="padding:2px 7px; font-size:0.65rem;">${pol.followDay}</span>` : `<span class="badge badge-red" style="padding:2px 7px; font-size:0.65rem;">OFF</span>`}</div><div class="cal-tag" style="color:${pol.isWorking ? "#1e3a8a" : "#be123c"};">${pol.label}</div><div>${pol.examsOnDay.length ? `<span class="cal-pill-sub" style="color:#1d4ed8;">Exam: ${pol.examsOnDay.length} Paper(s)</span>` : ""}${pol.eventsOnDay.length ? `<span class="cal-pill-sub" style="color:#b45309;">${pol.eventsOnDay[0].title}</span>` : ""}</div></div>`;
+  }
+  return `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.calendar)}<span>${SCHOOL_NAME} — Indian Academic Calendar</span></div><div style="display:flex; gap:8px; align-items:center;"><button class="btn btn-sm btn-outline" onclick="shiftCalendarMonth(-1)">Prev</button><strong style="min-width:140px; text-align:center;">${monthNames[calViewMonth]} ${calViewYear}</strong><button class="btn btn-sm btn-outline" onclick="shiftCalendarMonth(1)">Next</button></div></div><div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; font-size:0.78rem;"><span class="badge badge-blue">Regular Working Day</span><span class="badge badge-green">Weekend Working Day (Custom TT)</span><span class="badge badge-red">Indian National / Festival Holiday</span><span class="badge badge-amber">Campus Event / Exam Day</span>${canEdit ? `<span style="color:var(--primary); font-weight:700; margin-left:auto;">Click any date cell to configure Holiday or Working Saturday/Sunday Timetable</span>` : ""}</div><div class="cal-scroll-wrap"><div class="cal-board"><div class="cal-grid" style="margin-bottom:8px;">${DAY_NAMES.map(n => `<div class="cal-dow">${n}</div>`).join("")}</div><div class="cal-grid">${cellsHtml}</div></div></div></div>`;
+}
+
+function shiftCalendarMonth(delta) { calViewMonth += delta; if (calViewMonth < 0) { calViewMonth = 11; calViewYear--; } else if (calViewMonth > 11) { calViewMonth = 0; calViewYear++; } renderWorkspace(); }
+function openEditCalendarDayModal(dateStr) {
+  if (!currentUser || currentUser.role !== "admin") return;
+  const pol = getCalendarDayPolicy(dateStr);
+  document.getElementById("inspectModalTitle").textContent = `Configure Academic Calendar — ${dateStr}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="form-group"><label>Day Status</label><select id="calEdType" onchange="document.getElementById('calFollowWrap').style.display = this.value === 'Working' ? 'block' : 'none'"><option value="Working" ${pol.isWorking ? "selected" : ""}>Working School Day</option><option value="Holiday" ${!pol.isWorking ? "selected" : ""}>Holiday / Non-Working Day</option></select></div><div class="form-group" id="calFollowWrap" style="display:${pol.isWorking ? "block" : "none"};"><label>Timetable Day Order</label><select id="calEdFollowDay">${["Mon","Tue","Wed","Thu","Fri"].map(d => `<option value="${d}" ${(pol.followDay || "Mon") === d ? "selected" : ""}>Follow ${d} 8-Period Timetable</option>`).join("")}</select></div><div class="form-group"><label>Description / Holiday Name</label><input type="text" id="calEdLabel" value="${pol.label}" /></div><div style="display:flex; gap:10px; flex-wrap:wrap;"><button class="btn btn-success" onclick="saveCalendarDayPolicy('${dateStr}')">Save</button><button class="btn btn-outline" onclick="resetCalendarDayPolicy('${dateStr}')">Restore Default</button></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+function saveCalendarDayPolicy(dateStr) {
+  const type = document.getElementById("calEdType").value, followDay = document.getElementById("calEdFollowDay").value, label = document.getElementById("calEdLabel").value.trim() || (type === "Working" ? `Working Day (${followDay} TT)` : "School Holiday");
+  state.academicCalendar[dateStr] = { type, followDay: type === "Working" ? followDay : null, label };
+  saveState(); closeModal("inspectModal"); renderWorkspace();
+}
+function resetCalendarDayPolicy(dateStr) { delete state.academicCalendar[dateStr]; saveState(); closeModal("inspectModal"); renderWorkspace(); }
+
+function openApprovedQuestionPaperPDF(qpId) {
+  const qp = state.questionPapers.find(q => q.id === qpId); if (!qp) return;
+  const trackLabel = state.grades[qp.trackKey]?.displayName || qp.trackKey;
+  document.getElementById("inspectModalTitle").textContent = `Printable Examination Question Paper — ${SCHOOL_NAME}`;
+  document.getElementById("inspectModalBody").innerHTML = `
+    <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px; flex-wrap:wrap;"><span class="badge badge-green">COE SEALED & APPROVED FOR EXAM DISTRIBUTION</span><button class="btn btn-primary" onclick="window.print()">${ICONS.printer}<span>Print / Save Exam Question Paper PDF</span></button></div>
+    <div id="printablePdfArea" class="official-doc-sheet">
+      <div class="doc-letterhead"><div class="doc-crest">${SCHOOL_CREST_SVG}</div><div class="doc-title-center"><h2>${SCHOOL_NAME}</h2><p>Office of the Controller of Examinations • ${qp.title}</p></div><div style="text-align:right; font-size:0.78rem;"><div style="font-weight:700; margin-bottom:3px;">CANDIDATE REG. NO.</div><div class="reg-box-grid">${Array.from({length: 10}).map(() => `<span class="reg-box-cell"></span>`).join("")}</div></div></div>
+      <table class="doc-meta-table"><tr><td><strong>Class / Group:</strong> ${trackLabel}</td><td><strong>Subject & Code:</strong> ${qp.subjectName} (${qp.subjectCode})</td></tr><tr><td><strong>Duration:</strong> ${qp.duration || "3 Hours"}</td><td><strong>Maximum Marks:</strong> ${qp.totalMarks}</td></tr><tr><td colspan="2"><strong>Candidate Name:</strong> ______________________________________________________ &nbsp;&nbsp; <strong>Invigilator Sign:</strong> _________________</td></tr></table>
+      <div class="doc-instructions"><strong>GENERAL INSTRUCTIONS TO CANDIDATES:</strong><ol style="padding-left:18px; margin-top:4px;"><li>Write your 10-character Registration Number clearly in the boxes provided at the top right corner before reading the paper.</li><li>All questions are compulsory unless internal choices are explicitly specified within a question block.</li><li>Figures to the right in brackets indicate full marks allotted to each question.</li></ol></div>
+      <div style="margin-top:14px;">${qp.questions.map((q, i) => `<div style="margin-bottom:18px; page-break-inside:avoid;"><div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;"><div style="font-weight:700;">Q.${i + 1} <span style="font-weight:400; font-size:0.82rem;">[${q.type}]</span></div><div style="font-weight:700; white-space:nowrap;">[${q.marks} Marks]</div></div><div style="margin-top:4px; padding-left:24px; white-space:pre-wrap; text-align:justify;">${q.text}</div>${q.diagramDataUrl ? `<div style="margin-top:10px; padding-left:24px;"><img src="${q.diagramDataUrl}" style="max-height:210px; border:1px solid #0f172a; padding:4px;" /></div>` : ""}</div>`).join("")}</div>
+      <div class="doc-footer-bar"><span>${SCHOOL_NAME} • Confidential Examination Paper</span><span>COE Seal: APPROVED (${qp.approvedDate || "Verified"})</span><span>Page 1 of 1</span></div>
+    </div>
+  `;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function openPrintableHallTicket(studentId) {
+  const stu = state.users.find(u => u.id === studentId); if (!stu) return;
+  const seat = state.seatingPlan.find(s => s.studentId === stu.id), myExamTT = state.examTimetable.filter(t => t.trackKey === stu.trackKey), elig = getStudentEligibility(stu.id), pct = getStudentAttendancePct(stu.id);
+  document.getElementById("inspectModalTitle").textContent = `Printable Examination Hall Ticket — ${SCHOOL_NAME}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="no-print" style="display:flex; justify-content:flex-end; margin-bottom:12px;"><button class="btn btn-primary" onclick="window.print()">${ICONS.printer}<span>Print / Save Hall Ticket PDF</span></button></div><div id="printablePdfArea" class="official-doc-sheet"><div class="doc-letterhead"><div class="doc-crest">${SCHOOL_CREST_SVG}</div><div class="doc-title-center"><h2>${SCHOOL_NAME}</h2><p>Official Examination Hall Ticket & Admit Card</p></div><div style="border:1.5px solid #0f172a; padding:6px 10px; text-align:center; font-size:0.78rem;"><div><strong>EXAM ROOM</strong></div><div style="font-size:1.1rem; font-weight:900;">#${seat ? seat.roomNo : "TBA"}</div><div>Seat: <strong>${seat ? seat.seatNo : "TBA"}</strong></div></div></div><table class="doc-meta-table"><tr><td><strong>Candidate Name:</strong> ${stu.biodata?.fullName || stu.name}</td><td><strong>Registration No:</strong> ${stu.regNo}</td></tr><tr><td><strong>Admission No:</strong> ${stu.admissionNo || "-"}</td><td><strong>Class & Section:</strong> ${stu.classId} (${state.grades[stu.trackKey]?.displayName || ""})</td></tr><tr><td><strong>Attendance Standing:</strong> ${pct}%</td><td><strong>COE Clearance:</strong> ${elig.label}</td></tr></table><table class="doc-meta-table"><thead><tr style="background:#f1f5f9;"><td><strong>Exam Date</strong></td><td><strong>Session Timing</strong></td><td><strong>Subject Code</strong></td><td><strong>Subject Name</strong></td><td><strong>Invigilator Sign</strong></td></tr></thead><tbody>${myExamTT.map(t => `<tr><td>${t.date}</td><td>${t.sessionTime}</td><td>${t.subjectCode}</td><td>${t.subjectName}</td><td></td></tr>`).join("")}</tbody></table><div class="doc-footer-bar"><span>Candidate Signature</span><span>Controller of Examinations (${SCHOOL_NAME})</span><span>Page 1 of 1</span></div></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function openPrintableReportCard(studentId) {
+  const stu = state.users.find(u => u.id === studentId); if (!stu) return;
+  const publishedSheets = state.examMarks.filter(m => m.classId === stu.classId && m.status === "Approved" && m.published), pct = getStudentAttendancePct(stu.id);
+  let totalObtained = 0, totalMax = 0, gpSum = 0, gpCount = 0;
+  const rowsHtml = publishedSheets.map(sh => {
+    const ent = sh.entries.find(e => e.studentId === stu.id), exStatus = ent?.examStatus || "Present", sc = ent?.marks;
+    if (sc === null || sc === undefined) return `<tr><td>${sh.examName}</td><td>${sh.subjectCode}</td><td>${sh.subjectName}</td><td>${exStatus}</td><td>${ent?.reExamMarks || "N/A"}</td><td>${sh.maxMarks}</td><td>-</td><td>${exStatus}</td></tr>`;
+    totalObtained += sc; totalMax += sh.maxMarks;
+    const p = Math.round((sc / sh.maxMarks) * 100), g = computeGrade(p);
+    gpSum += g.gp; gpCount++;
+    return `<tr><td>${sh.examName}</td><td>${sh.subjectCode}</td><td>${sh.subjectName}</td><td>${exStatus}</td><td><strong>${sc}</strong></td><td>${sh.maxMarks}</td><td>${p}%</td><td><strong>${g.grade}</strong></td></tr>`;
+  }).join("");
+  const gpa = gpCount ? (gpSum / gpCount).toFixed(2) : "0.00";
+  document.getElementById("inspectModalTitle").textContent = `Printable Statement of Marks & Report Card — ${SCHOOL_NAME}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="no-print" style="display:flex; justify-content:flex-end; margin-bottom:12px;"><button class="btn btn-primary" onclick="window.print()">${ICONS.printer}<span>Print / Save Report Card PDF</span></button></div><div id="printablePdfArea" class="official-doc-sheet"><div class="doc-letterhead"><div class="doc-crest">${SCHOOL_CREST_SVG}</div><div class="doc-title-center"><h2>${SCHOOL_NAME}</h2><p>Official Statement of Marks & Academic Progress Report Card</p></div><div style="width:64px;"></div></div><table class="doc-meta-table"><tr><td><strong>Student Name:</strong> ${stu.biodata?.fullName || stu.name}</td><td><strong>Registration No:</strong> ${stu.regNo}</td></tr><tr><td><strong>Admission No:</strong> ${stu.admissionNo || "-"}</td><td><strong>Class & Section:</strong> ${stu.classId}</td></tr><tr><td><strong>Parent / Guardian:</strong> ${stu.biodata?.guardianName || "-"}</td><td><strong>Overall Attendance:</strong> ${pct}%</td></tr></table><table class="doc-meta-table"><thead><tr style="background:#f1f5f9;"><td><strong>Examination</strong></td><td><strong>Code</strong></td><td><strong>Subject</strong></td><td><strong>Status</strong></td><td><strong>Marks</strong></td><td><strong>Max</strong></td><td><strong>%</strong></td><td><strong>Grade</strong></td></tr></thead><tbody>${rowsHtml}</tbody></table><table class="doc-meta-table"><tr><td><strong>Grand Total:</strong> ${totalObtained} / ${totalMax}</td><td><strong>Cumulative GPA:</strong> ${gpa} / 10.0</td><td><strong>Result Status:</strong> ${totalMax > 0 ? "PUBLISHED" : "PENDING"}</td></tr></table><div class="doc-footer-bar"><span>Class Teacher</span><span>Controller of Examinations</span><span>Principal • ${SCHOOL_NAME}</span></div></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function printStudentFeeReceipts(studentId) {
+  const stu = state.users.find(u => u.id === studentId), gObj = state.grades[stu?.trackKey], pays = state.feePayments.filter(p => p.studentId === studentId);
+  const totalFee = gObj?.feeAmount || 0, paid = pays.reduce((a, b) => a + b.amount, 0), due = Math.max(0, totalFee - paid), f = gObj?.fees || {};
+  document.getElementById("inspectModalTitle").textContent = `Printable Official Fee Receipt — ${SCHOOL_NAME}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="no-print" style="display:flex; justify-content:flex-end; margin-bottom:12px;"><button class="btn btn-primary" onclick="window.print()">${ICONS.printer}<span>Print / Save Fee Receipt PDF</span></button></div><div id="printablePdfArea" class="official-doc-sheet"><div class="doc-letterhead"><div class="doc-crest">${SCHOOL_CREST_SVG}</div><div class="doc-title-center"><h2>${SCHOOL_NAME}</h2><p>Administrative Office • Official Fee Structure & Payment Receipt</p></div><div style="width:64px;"></div></div><table class="doc-meta-table"><tr><td><strong>Student Name:</strong> ${stu?.biodata?.fullName || stu?.name}</td><td><strong>Admission No:</strong> ${stu?.admissionNo || "-"}</td></tr><tr><td><strong>Registration No:</strong> ${stu?.regNo}</td><td><strong>Class & Section:</strong> ${stu?.classId} (${gObj?.displayName || "-"})</td></tr></table><table class="doc-meta-table"><thead><tr style="background:#f1f5f9;">${state.feeHeads.map(h => `<td><strong>${h.label}</strong></td>`).join("")}<td><strong>Total Annual Fee</strong></td></tr></thead><tbody><tr>${state.feeHeads.map(h => `<td>₹${f[h.key] !== undefined ? f[h.key] : h.defaultVal}</td>`).join("")}<td><strong>₹${totalFee}</strong></td></tr></tbody></table><table class="doc-meta-table"><thead><tr style="background:#f1f5f9;"><td><strong>Receipt No</strong></td><td><strong>Payment Date</strong></td><td><strong>Payment Mode</strong></td><td><strong>Amount Paid (₹)</strong></td></tr></thead><tbody>${pays.map(p => `<tr><td>${p.receiptNo}</td><td>${p.date}</td><td>${p.mode}</td><td><strong>₹${p.amount}</strong></td></tr>`).join("")}</tbody></table><table class="doc-meta-table"><tr><td><strong>Total Fee Billed:</strong> ₹${totalFee}</td><td><strong>Total Paid at Office:</strong> ₹${paid}</td><td><strong>Balance Due:</strong> ₹${due}</td></tr></table><div class="doc-footer-bar"><span>Student / Parent Copy</span><span>Cashier / Accounts Officer • ${SCHOOL_NAME}</span><span>Page 1 of 1</span></div></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function renderWorkspace() {
+  const box = document.getElementById("mainWorkspace");
+  if (currentUser.role === "admin") renderAdmin(box);
+  else if (currentUser.role === "office") renderOffice(box);
+  else if (currentUser.role === "faculty") renderFaculty(box);
+  else if (currentUser.role === "coe") renderCOE(box);
+  else renderStudent(box);
+}
+
+function renderAdmin(box) {
+  const students = state.users.filter(u => u.role === "student"), faculty = state.users.filter(u => u.role === "faculty"), trackKeys = getSortedTrackKeys();
+
+  if (activeTab === "adm-overview") {
+    box.innerHTML = `
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="stat-box clickable" onclick="switchTab('adm-bulk-matrix')"><div class="stat-label">Active Tracks <span>↗</span></div><div class="stat-val">${trackKeys.length}</div><div class="stat-sub">Classes 1–12 & TN Groups</div></div>
+        <div class="stat-box clickable" onclick="switchTab('adm-accounts')"><div class="stat-label">Sections (A–E) <span>↗</span></div><div class="stat-val">${state.classes.length}</div><div class="stat-sub">View section rosters</div></div>
+        <div class="stat-box clickable" onclick="switchTab('adm-accounts')"><div class="stat-label">Students <span>↗</span></div><div class="stat-val">${students.length}</div><div class="stat-sub">Manage accounts</div></div>
+        <div class="stat-box clickable" onclick="switchTab('adm-faculty')"><div class="stat-label">Faculty Pool <span>↗</span></div><div class="stat-val">${faculty.length}</div><div class="stat-sub">Stage & lab load matrix</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><div class="card-title-left">${iconBox(ICONS.database)}<span>Full Portal Backup & Restore (Export / Import All Data)</span></div><span class="badge badge-blue">JSON Snapshot</span></div>
+        <div class="grid-2">
+          <div class="backup-box"><div><h4>1. Export Complete Website Data</h4><p style="margin-top:4px;">Download a complete backup file containing all grades, Class 11 & 12 Tamil Nadu Groups (I a–III c), two-tier PE/LIB/CSC specialists, theory-linked labs, attendance records, fees & marks[span_2](start_span)[span_2](end_span).</p></div><button class="btn btn-primary" onclick="exportAllPortalData()">Export All Website Data (.json)</button></div>
+          <div class="backup-box"><div><h4>2. Import & Restore Website Data</h4><p style="margin-top:4px;">Restore your exported <code>.json</code> backup file anytime to recover all accounts, schedules, and marks.</p></div><div><input type="file" id="importBackupInput" accept=".json,application/json" style="display:none;" onchange="importAllPortalData(event)" /><button class="btn btn-success" style="width:100%;" onclick="document.getElementById('importBackupInput').click()">Import Backup File (.json)</button></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><div class="card-title-left">${iconBox(ICONS.sliders)}<span>Institutional Governance Controls</span></div></div>
+        <div class="switch-row" style="margin-bottom:16px;"><div><strong>Enable Student Biodata Self-Editing (All Student Accounts)</strong><div style="font-size:0.82rem; color:var(--muted); margin-top:2px;">Unlocks personal biodata editing on every student dashboard.</div></div><input type="checkbox" ${state.settings.allowStudentBiodataEdit ? "checked" : ""} onchange="toggleStudentBiodata(this.checked)" /></div>
+        <div class="form-group"><label>Spotlight Notice Banner</label><div style="display:flex; gap:10px; flex-wrap:wrap;"><input type="text" id="spotlightInput" style="flex:1; min-width:200px;" value="${state.settings.spotlight.replace(/"/g, "&quot;")}" /><button class="btn btn-navy" onclick="updateSpotlight()">Update Banner</button></div></div>
+        <div style="margin-top:18px; padding-top:14px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;"><span style="font-size:0.82rem; color:var(--muted);">Authorized Administrator System Reset</span><button class="btn btn-sm btn-danger" onclick="resetAllDataAsAdmin()">Reset System Data</button></div>
+      </div>
+    `;
+  } else if (activeTab === "adm-calendar") { box.innerHTML = renderAcademicCalendarWidget(true); }
+  else if (activeTab === "adm-bulk-matrix") {
+    box.innerHTML = `
+      <div class="card">
+        <div class="card-title">
+          <div class="card-title-left">${iconBox(ICONS.layers)}<span>1. Combined Class & Tamil Nadu Higher Secondary Group Bulk Table</span></div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm btn-outline" onclick="toggleAllMatrixTracks(true)">Select All Tracks</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="toggleAllMatrixTracks(false)">Unselect All</button>
+            <button type="button" class="btn btn-sm btn-primary" onclick="executeBulkClassMatrix()">Generate Selected Classes & Students</button>
+          </div>
+        </div>
+
+        <div class="gen-range-panel">
+          <label class="gen-range-toggle">
+            <input type="checkbox" id="useGeneralizedRangeChk" checked onchange="toggleGeneralizedRangeMode()" />
+            <span>Follow Generalized Student Range Across All Classes (Uncheck to Enter Each Class Range Separately)</span>
+          </label>
+          <div class="gen-range-inputs" id="genRangeInputsWrap">
+            <label for="genMinStuInput">Generalized Min:</label>
+            <input type="number" id="genMinStuInput" min="1" max="80" value="15" oninput="syncGeneralizedRangeToRows()" />
+            <label for="genMaxStuInput">Generalized Max:</label>
+            <input type="number" id="genMaxStuInput" min="1" max="80" value="25" oninput="syncGeneralizedRangeToRows()" />
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom:14px;">
+          <div class="form-group" style="margin-bottom:0;"><label>Academic Batch</label><input type="text" id="mtxBatch" value="2026-27" /></div>
+          <div class="form-group" style="margin-bottom:0;"><label>Starting Room Number</label><input type="number" id="mtxStartRoom" value="101" /></div>
+          <div class="form-group" style="margin-bottom:0;"><label>Exam Room Capacity</label><input type="number" id="mtxRoomCap" value="30" /></div>
+        </div>
+
+        <div class="filter-bar">
+          <input type="text" id="mtxTrackFilter" placeholder="Filter by Class or Group (e.g. Class 11, Group I a, Group III b)..." oninput="filterMatrixRows()" />
+        </div>
+
+        <div class="table-wrap" style="margin-bottom:14px;">
+          <table>
+            <thead><tr><th>Include</th><th>Stage</th><th>Class & Higher Sec Group</th><th>Sections (A–E)</th><th>Min Stus</th><th>Max Stus</th><th>Authorized Subjects & Labs</th></tr></thead>
+            <tbody>
+              ${CLASS_TRACK_DEFINITIONS.map(def => {
+                const subs = getAuthorizedSubjectsForTrack(def.grade, def.stream).map(s => `${s.code}(${s.credits})`).join(", "), isSenior = def.grade >= 11;
+                return `
+                  <tr class="mtx-track-row ${isSenior ? "stream-row-tint" : ""}" data-search="${(def.displayName + " " + def.stage).toLowerCase()}">
+                    <td><input type="checkbox" class="tbl-chk mtx-trk-enable" data-track="${def.trackKey}" checked /></td>
+                    <td><span class="badge ${def.stage==="Primary"?"badge-green":def.stage==="Secondary"?"badge-blue":"badge-purple"}">${def.stage}</span></td>
+                    <td><strong>${def.displayName}</strong></td>
+                    <td style="white-space:nowrap;">${["A","B","C","D","E"].map(sec => `<label class="sec-pill-lbl" style="margin-right:3px;"><input type="checkbox" class="mtx-trk-sec" data-track="${def.trackKey}" value="${sec}" checked />${sec}</label>`).join("")}</td>
+                    <td><input type="number" class="tbl-inp mtx-trk-min" data-track="${def.trackKey}" min="1" max="80" value="15" disabled /></td>
+                    <td><input type="number" class="tbl-inp mtx-trk-max" data-track="${def.trackKey}" min="1" max="80" value="25" disabled /></td>
+                    <td><code style="font-size:0.76rem;">${subs}</code></td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="executeBulkClassMatrix()">Generate All Selected Classes & Varied Student Batches</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <div class="card-title-left">${iconBox(ICONS.users)}<span>2. Smart Multi-Faculty Generator (Two-Tier Specialists & Theory-Linked Labs)</span></div>
+          <button type="button" class="btn btn-sm btn-success" onclick="executeBulkSubjectFacultyMatrix()">Create Faculty & Auto-Link Labs</button>
+        </div>
+        <div class="table-wrap" style="margin-bottom:14px;">
+          <table>
+            <thead><tr><th>Subject</th><th>Category & Load Rule</th><th>Primary (Classes 1–5)</th><th>Secondary (6–10 or 6–12)</th><th>Higher Sec (Classes 11–12)</th></tr></thead>
+            <tbody>
+              ${RECRUITABLE_SUBJECTS.map(sub => {
+                const isTwoTier = TWO_TIER_SPECIALIST_CODES.has(sub.code);
+                const priSecs = state.classes.filter(c => c.grade <= 5 && state.grades[c.trackKey]?.subjects.some(s => s.code === sub.code)).length;
+                const secSecs = isTwoTier ? state.classes.filter(c => c.grade >= 6 && state.grades[c.trackKey]?.subjects.some(s => s.code === sub.code)).length : state.classes.filter(c => c.grade >= 6 && c.grade <= 10 && state.grades[c.trackKey]?.subjects.some(s => s.code === sub.code)).length;
+                const hsSecs = isTwoTier ? 0 : state.classes.filter(c => c.grade >= 11 && state.grades[c.trackKey]?.subjects.some(s => s.code === sub.code)).length;
+                const exPri = faculty.filter(f => f.subjectCode === sub.code && f.stage === "Primary").length, exSec = faculty.filter(f => f.subjectCode === sub.code && f.stage === "Secondary").length, exHs = faculty.filter(f => f.subjectCode === sub.code && f.stage === "HigherSecondary").length;
+                const priCap = isTwoTier ? 20 : 4, secCap = isTwoTier ? 24 : 4;
+                const needPri = Math.max(0, Math.ceil(priSecs / priCap) - exPri), needSec = Math.max(0, Math.ceil(secSecs / secCap) - exSec), needHs = isTwoTier ? 0 : Math.max(0, Math.ceil(hsSecs / 4) - exHs);
+                return `
+                  <tr>
+                    <td><span class="badge badge-blue">${sub.code}</span> <strong>${sub.name}</strong></td>
+                    <td>${isTwoTier ? `<span class="badge badge-purple">2-Tier Specialist (Max 36 Secs)</span>` : `<span class="badge badge-gray">3-Stage Core (4 Secs + Linked Lab)</span>`}</td>
+                    <td><div style="display:flex; align-items:center; gap:6px;"><input type="number" class="tbl-inp mtx-stage-fac" data-stage="Primary" data-code="${sub.code}" data-name="${sub.name}" min="0" max="30" value="${needPri}" style="max-width:72px;" /><span style="font-size:0.73rem; color:var(--muted);">(${exPri} / ${priSecs} secs)</span></div></td>
+                    <td><div style="display:flex; align-items:center; gap:6px;"><input type="number" class="tbl-inp mtx-stage-fac" data-stage="Secondary" data-code="${sub.code}" data-name="${sub.name}" min="0" max="30" value="${needSec}" style="max-width:72px;" /><span style="font-size:0.73rem; color:var(--muted);">(${exSec} / ${secSecs} secs)</span></div></td>
+                    <td>${isTwoTier ? `<span style="font-size:0.76rem; color:var(--muted);">Covered under Secondary (6–12)</span>` : `<div style="display:flex; align-items:center; gap:6px;"><input type="number" class="tbl-inp mtx-stage-fac" data-stage="HigherSecondary" data-code="${sub.code}" data-name="${sub.name}" min="0" max="30" value="${needHs}" style="max-width:72px;" /><span style="font-size:0.73rem; color:var(--muted);">(${exHs} / ${hsSecs} secs)</span></div>`}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+        <button type="button" class="btn btn-success" onclick="executeBulkSubjectFacultyMatrix()">Create Faculty & Auto-Link Labs</button>
+      </div>
+    `;
+  } else if (activeTab === "adm-credits") {
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.sliders)}<span>Subject Credit Weightage & Combined 2-Period Lab Configuration</span></div><button class="btn btn-sm btn-success" onclick="saveAllTrackSubjectCredits()">Save Credits & Re-Generate Timetable</button></div>${trackKeys.length ? trackKeys.map(tk => { const gObj = state.grades[tk], totalCred = gObj.subjects.reduce((sum, s) => sum + (Number(s.credits) || 1), 0); return `<div style="border:1px solid #cbd5e1; border-radius:12px; padding:14px; margin-bottom:14px; background:#fff;"><div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:10px;"><strong>${gObj.displayName}</strong><span class="badge badge-blue">Total Track Credits: ${totalCred} → 40 Periods/Week</span></div><div class="grid-4">${gObj.subjects.map(s => `<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px; display:flex; justify-content:space-between; align-items:center; gap:8px;"><div><div style="font-weight:700; font-size:0.82rem;">${s.code} ${s.isLab ? `<span class="badge badge-purple" style="padding:1px 6px;">2-P LAB</span>` : ""}</div><div style="font-size:0.74rem; color:var(--muted);">${s.name}</div></div><input type="number" class="tbl-inp trk-cred-inp" data-track="${tk}" data-code="${s.code}" min="1" max="15" value="${s.credits || 2}" style="max-width:65px; text-align:center; font-weight:700;" /></div>`).join("")}</div></div>`; }).join("") : `<div class="empty-state">Create classes first in <strong>Bulk Classes & Stage Faculty</strong>.</div>`}</div>`;
+  } else if (activeTab === "adm-accounts") {
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.users)}<span>Manage Institutional Accounts & Automated Login (${state.users.length})</span></div></div><div class="filter-bar"><select id="accFilterRole" onchange="filterAccountsTable()"><option value="all">All Roles (${state.users.length})</option><option value="student">Students (${students.length})</option><option value="faculty">Faculty (${faculty.length})</option><option value="office">Office Staff</option><option value="coe">COE / Admin</option></select><select id="accFilterSection" onchange="filterAccountsTable()"><option value="all">All Sections</option>${state.classes.map(c => `<option value="${c.id.toLowerCase()}">${c.id}</option>`).join("")}</select><input type="text" id="accSearchInput" placeholder="Search Name, Adm No, Reg ID, Group, Username..." oninput="filterAccountsTable()" /></div><div class="table-wrap"><table><thead><tr><th>Role / Stage</th><th>Name</th><th>Adm No / Reg ID / Subject</th><th>Section</th><th>Username</th><th>Password</th><th>Actions</th></tr></thead><tbody>${state.users.map(u => `<tr class="acc-row" data-role="${u.role}" data-sec="${(u.classId||"").toLowerCase()}" data-search="${(u.name + " " + (u.stage||"") + " " + (u.admissionNo||"") + " " + (u.regNo||"") + " " + u.username + " " + (u.classId||"") + " " + (u.subjectCode||"")).toLowerCase()}"><td><span class="badge ${u.role==="student"?"badge-blue":u.role==="faculty"?"badge-green":u.role==="office"?"badge-purple":"badge-amber"}">${u.role.toUpperCase()}</span>${u.stage ? `<div style="font-size:0.7rem; color:var(--muted); margin-top:2px;">${getDisplayStageLabel(u)}</div>` : ""}</td><td><strong>${u.biodata?.fullName || u.name}</strong></td><td>${u.role === "student" ? `<code>${u.admissionNo || "-"}</code> / <code>${u.regNo}</code>` : (u.subjectCode ? `${u.subjectCode} — ${u.subjectName}` : u.id)}</td><td>${u.classId || "-"}</td><td><code>${u.username}</code></td><td><code>${u.password}</code></td><td style="display:flex; gap:6px; flex-wrap:wrap;">${u.id !== currentUser.id ? `<button class="btn btn-sm btn-primary" onclick="adminAutomatedLogin('${u.id}')">Auto-Login</button>` : `<span class="badge badge-gray">Current</span>`}<button class="btn btn-sm btn-outline" onclick="openEditAccountModal('${u.id}')">Edit</button>${!["admin","coe","office"].includes(u.role) ? `<button class="btn btn-sm btn-danger" onclick="deleteUserAccount('${u.id}')">Remove</button>` : ""}</td></tr>`).join("")}</tbody></table></div></div>`;
+  } else if (activeTab === "adm-faculty") {
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.edit)}<span>Faculty Workload, Linked Labs & Clash-Safe Assignment Editor (${faculty.length})</span></div><button class="btn btn-sm btn-warn" onclick="strictRandomFacultyAllocation()">Re-Randomize Allocations</button></div><div class="filter-bar"><select id="facFilterStage" onchange="filterFacultyTable()"><option value="all">All Teaching Stages</option><option value="Primary">Primary (Classes 1–5)</option><option value="Secondary">Secondary (6–10 / 6–12 Specialists)</option><option value="HigherSecondary">Higher Secondary (Classes 11–12)</option></select><select id="facFilterSub" onchange="filterFacultyTable()"><option value="all">All Subjects</option>${RECRUITABLE_SUBJECTS.map(s => `<option value="${s.code}">${s.code} — ${s.name}</option>`).join("")}</select><input type="text" id="facFilterSearch" placeholder="Search Faculty or Section..." oninput="filterFacultyTable()" /></div>${faculty.length ? `<div class="table-wrap"><table><thead><tr><th>Faculty Name</th><th>Stage</th><th>Subject</th><th>Theory Sections (Cap)</th><th>Auto-Linked Lab Sections</th><th>Actions</th></tr></thead><tbody>${faculty.map(f => { const theorySecs = state.allocations.filter(a => a.facultyId === f.id && !a.isLab).map(a => a.classId), labAllocs = state.allocations.filter(a => a.facultyId === f.id && a.isLab), cap = getFacultyMaxSections(f); return `<tr class="fac-row" data-stage="${f.stage || ""}" data-sub="${f.subjectCode}" data-search="${(f.name + " " + theorySecs.join(" ")).toLowerCase()}"><td><strong>${f.name}</strong><div style="font-size:0.74rem; color:var(--muted);"><code>${f.username}</code></div></td><td><span class="badge ${f.stage==="Primary"?"badge-green":f.stage==="Secondary"?"badge-blue":"badge-purple"}">${getDisplayStageLabel(f)}</span></td><td><span class="badge badge-gray">${f.subjectCode}</span> ${f.subjectName}</td><td><div style="margin-bottom:4px;"><strong>${theorySecs.length} / ${cap}</strong></div>${theorySecs.length ? theorySecs.map(cid => `<span class="badge badge-green" style="margin-right:3px; margin-bottom:2px;">${cid}</span>`).join("") : `<span style="color:var(--muted); font-size:0.78rem;">None</span>`}</td><td>${labAllocs.length ? labAllocs.map(la => `<span class="badge badge-purple" style="margin-right:3px; margin-bottom:2px;">${la.classId} (${la.subjectCode})</span>`).join("") : `<span style="color:var(--muted); font-size:0.78rem;">-</span>`}</td><td style="display:flex; gap:6px; flex-wrap:wrap;"><button class="btn btn-sm btn-navy" onclick="openEditFacultyAssignmentsModal('${f.id}')">Edit Sections</button><button class="btn btn-sm btn-primary" onclick="adminAutomatedLogin('${f.id}')">Auto-Login</button></td></tr>`; }).join("")}</tbody></table></div>` : `<div class="empty-state">No faculty accounts created yet.</div>`}</div>`;
+  } else if (activeTab === "adm-fees-grid") {
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.wallet)}<span>Customize Fee Components</span></div></div><div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;">${state.feeHeads.map((h, idx) => `<div style="display:flex; align-items:center; gap:6px; background:#f8fafc; border:1px solid #cbd5e1; padding:6px 10px; border-radius:8px;"><input type="text" id="feeHeadName_${idx}" value="${h.label}" style="min-height:36px; padding:4px 8px; width:150px; font-weight:600;" /><button class="btn btn-sm btn-outline" onclick="renameFeeHead(${idx})">Rename</button>${state.feeHeads.length > 1 ? `<button class="btn btn-sm btn-danger" onclick="removeFeeHead(${idx})">×</button>` : ""}</div>`).join("")}</div><div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;"><input type="text" id="newFeeHeadLabel" placeholder="New Fee Component Name" style="max-width:320px;" /><input type="number" id="newFeeHeadDefault" placeholder="Default ₹" value="1500" style="max-width:130px;" /><button class="btn btn-navy" onclick="addFeeHeadComponent()">Add Fee Component</button></div></div><div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.file)}<span>Class & Higher Secondary Group Fee Ledger Grid</span></div><div style="display:flex; gap:8px; flex-wrap:wrap;"><button class="btn btn-sm btn-outline" onclick="applyUniformFeeToAll()">Apply Uniform Amounts</button><button class="btn btn-sm btn-success" onclick="saveAllTrackFeesGrid()">Save All Fees at Once</button></div></div>${trackKeys.length ? `<div class="table-wrap" style="margin-bottom:14px;"><table><thead><tr><th>Class / Higher Sec Group</th><th>Sections</th>${state.feeHeads.map(h => `<th>${h.label} (₹)</th>`).join("")}<th>Total Fee (₹)</th></tr></thead><tbody>${trackKeys.map(tk => { const gObj = state.grades[tk], f = gObj.fees || {}, secs = state.classes.filter(c => c.trackKey === tk).map(c => c.section).join(", "); let rowTotal = 0; state.feeHeads.forEach(h => { rowTotal += (f[h.key] !== undefined ? f[h.key] : h.defaultVal); }); return `<tr><td><strong>${gObj.displayName}</strong></td><td><span class="badge badge-blue">${secs}</span></td>${state.feeHeads.map(h => { const val = f[h.key] !== undefined ? f[h.key] : h.defaultVal; return `<td><input type="number" class="fee-grid-inp" data-track="${tk}" data-head="${h.key}" value="${val}" oninput="recalcFeeRow('${tk}')" /></td>`; }).join("")}<td><strong id="feeRowTotal_${tk}" style="color:var(--navy-900);">₹${rowTotal}</strong></td></tr>`; }).join("")}</tbody></table></div><button class="btn btn-success" onclick="saveAllTrackFeesGrid()">Save All Fees at Once</button>` : `<div class="empty-state">No classes created yet.</div>`}</div>`;
+  } else if (activeTab === "adm-timetable") {
+    const ttClasses = Object.keys(state.weeklyTimetable);
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.clock)}<span>Credit-Weighted 8-Period Timetable (Combined 2-Period Lab Blocks)</span></div><button class="btn btn-navy" onclick="generateStrictRandomWeeklyTimetable()">Generate Credit-Weighted Timetable</button></div>${ttClasses.length ? `<div class="filter-bar"><input type="text" id="ttFilterInput" placeholder="Filter Section..." oninput="filterSummaryTiles('ttFilterInput', 'tt-tile')" /></div><div class="grid-3">${ttClasses.map(cid => `<div class="stat-box clickable tt-tile" data-search="${cid.toLowerCase()}" onclick="openTimetableModal('${cid}')"><div class="stat-label">Section Timetable <span>↗</span></div><div class="stat-val" style="font-size:1.2rem;">${cid}</div><div class="stat-sub">8 Periods × 5 Days • Paired Labs</div></div>`).join("")}</div>` : `<div class="empty-state">No 8-period timetable generated yet.</div>`}</div>`;
+  } else if (activeTab === "adm-events-certs") {
+    box.innerHTML = `<div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.award)}<span>Publish Sports & Campus Event</span></div></div><div class="grid-3"><div class="form-group"><label>Event Title</label><input type="text" id="evTitle" /></div><div class="form-group"><label>Category</label><select id="evCat"><option>Sports</option><option>Science & Innovation</option><option>Cultural</option><option>NSS / NCC</option></select></div><div class="form-group"><label>Start Date & Time</label><input type="datetime-local" id="evDateTime" /></div><div class="form-group"><label>Venue</label><input type="text" id="evVenue" /></div><div class="form-group"><label>Max Participants</label><input type="number" id="evSlots" value="50" /></div></div><button class="btn btn-primary" onclick="createSchoolEvent()">Publish Event</button></div><div class="card"><div class="card-title"><div class="card-title-left">${iconBox(ICONS.file)}<span>Certificate Designer & Dispatch</span></div></div><div class="grid-2"><div class="form-group"><label>Select Event</label><select id="certEventId">${state.events.map(e => `<option value="${e.id}">${e.title} (${e.participants.length} Joined)</option>`).join("")}</select></div><div class="form-group"><label>Certificate Heading</label><input type="text" id="certHeading" value="CERTIFICATE OF ACHIEVEMENT & PARTICIPATION" /></div></div><div class="form-group"><label>Citation Text</label><input type="text" id="certCitation" value="This is to certify that {NAME} has actively participated and demonstrated excellence in {EVENT}." /></div><button class="btn btn-success" onclick="dispatchEventCertificates()">Send Certificates to Participants</button></div>`;
+  }
+}
+
+function toggleGeneralizedRangeMode() {
+  const useGen = document.getElementById("useGeneralizedRangeChk")?.checked, genWrap = document.getElementById("genRangeInputsWrap");
+  if (genWrap) genWrap.style.opacity = useGen ? "1" : "0.45";
+  document.getElementById("genMinStuInput").disabled = !useGen;
+  document.getElementById("genMaxStuInput").disabled = !useGen;
+  document.querySelectorAll(".mtx-trk-min, .mtx-trk-max").forEach(inp => { inp.disabled = useGen; });
+  if (useGen) syncGeneralizedRangeToRows();
+}
+
+function syncGeneralizedRangeToRows() {
+  if (!document.getElementById("useGeneralizedRangeChk")?.checked) return;
+  const gMin = parseInt(document.getElementById("genMinStuInput")?.value, 10) || 1, gMax = Math.max(gMin, parseInt(document.getElementById("genMaxStuInput")?.value, 10) || gMin);
+  document.querySelectorAll(".mtx-trk-min").forEach(inp => { inp.value = gMin; });
+  document.querySelectorAll(".mtx-trk-max").forEach(inp => { inp.value = gMax; });
+}
+
+function executeBulkClassMatrix() {
+  const batch = document.getElementById("mtxBatch").value.trim() || "2026-27", startRoom = parseInt(document.getElementById("mtxStartRoom").value, 10) || 101, roomCap = parseInt(document.getElementById("mtxRoomCap").value, 10) || 30;
+  const useGen = document.getElementById("useGeneralizedRangeChk")?.checked, genMin = Math.max(1, parseInt(document.getElementById("genMinStuInput")?.value, 10) || 15), genMax = Math.max(genMin, parseInt(document.getElementById("genMaxStuInput")?.value, 10) || genMin);
+  let createdSections = 0, createdStudents = 0;
+
+  CLASS_TRACK_DEFINITIONS.forEach(def => {
+    if (!document.querySelector(`.mtx-trk-enable[data-track="${def.trackKey}"]`)?.checked) return;
+    const minStu = useGen ? genMin : Math.max(1, parseInt(document.querySelector(`.mtx-trk-min[data-track="${def.trackKey}"]`)?.value, 10) || 10);
+    const maxStu = useGen ? genMax : Math.max(minStu, parseInt(document.querySelector(`.mtx-trk-max[data-track="${def.trackKey}"]`)?.value, 10) || minStu);
+    const secs = Array.from(document.querySelectorAll(`.mtx-trk-sec[data-track="${def.trackKey}"]:checked`)).map(c => c.value);
+    if (!secs.length) return;
+    ensureTrackPolicy(def);
+
+    secs.forEach(sec => {
+      const classId = def.streamShort ? `${def.grade}-${def.streamShort}-${sec}` : `${def.grade}-${sec}`;
+      let cls = state.classes.find(c => c.id === classId);
+      if (!cls) {
+        const roomNo = getNextAvailableRoomNo(startRoom);
+        cls = { id: classId, trackKey: def.trackKey, grade: def.grade, stage: def.stage, section: sec, stream: def.stream, batch, roomNo };
+        state.classes.push(cls); createdSections++;
+        if (!state.rooms.some(r => String(r.roomNo) === String(roomNo))) state.rooms.push({ id: `RM_${roomNo}`, roomNo: String(roomNo), capacity: roomCap });
+      }
+      const sectionTargetCount = trueRandomRange(minStu, maxStu), existingInClass = state.users.filter(u => u.role === "student" && u.classId === classId).length;
+      const regPrefix = def.streamShort ? `26C${def.grade}${def.streamShort}${sec}` : `26C${String(def.grade).padStart(2,"0")}${sec}`;
+      for (let i = 1; i <= sectionTargetCount; i++) {
+        const seq = String(existingInClass + i).padStart(3, "0"), regNo = `${regPrefix}${seq}`, admissionNo = `ADM2026${state.admissionCounter++}`, username = regNo.toLowerCase(), password = `Stu@${1000 + trueRandomInt(9000)}`;
+        state.users.push({ id: `STU_${regNo}`, role: "student", admissionNo, regNo, name: `Student ${regNo}`, username, password, email: `${username}@psmschools.edu.in`, classId, trackKey: def.trackKey, grade: def.grade, section: sec, stream: def.stream, biodata: { fullName: `Student ${regNo}`, dob: "", bloodGroup: "", guardianName: "", phone: "", address: "" } });
+        createdStudents++;
+      }
+    });
+  });
+  if (!createdSections && !createdStudents) return alert("Select at least one Class/Group Track and Section.");
+  saveState(); renderWorkspace();
+  alert(`Bulk Matrix Complete!\n• Sections Provisioned: ${createdSections}\n• Students Generated: ${createdStudents}`);
+}
+
+function executeBulkSubjectFacultyMatrix() {
+  if (!state.classes.length) return alert("Generate Classes & Groups first.");
+  let createdFaculty = 0;
+  document.querySelectorAll(".mtx-stage-fac").forEach(inp => {
+    const count = parseInt(inp.value, 10) || 0; if (count <= 0) return;
+    const stage = inp.dataset.stage, subjectCode = inp.dataset.code, subjectName = inp.dataset.name, stageTag = stage === "Primary" ? "PRI" : stage === "Secondary" ? "SEC" : "HS";
+    const existing = state.users.filter(u => u.role === "faculty" && u.subjectCode === subjectCode && u.stage === stage).length;
+    for (let i = 1; i <= count; i++) {
+      const seq = String(existing + i).padStart(2, "0"), fid = `FAC_${stageTag}_${subjectCode}_${seq}`, username = `fac.${stageTag.toLowerCase()}.${subjectCode.toLowerCase()}.${seq}`;
+      state.users.push({ id: fid, role: "faculty", stage, name: `Prof. ${subjectName.split("(")[0].trim()} (${stageTag}-${seq})`, username, password: `Fac@${100 + trueRandomInt(900)}`, email: `${username}@psmschools.edu.in`, subjectCode, subjectName });
+      createdFaculty++;
+    }
+  });
+  strictRandomFacultyAllocation(true); saveState(); renderWorkspace();
+  alert(`Created ${createdFaculty} faculty accounts and auto-linked all Practical Labs to their Theory teachers!`);
+}
+
+function saveAllTrackSubjectCredits() {
+  document.querySelectorAll(".trk-cred-inp").forEach(inp => { const sub = state.grades[inp.dataset.track]?.subjects.find(s => s.code === inp.dataset.code); if (sub) sub.credits = Math.max(1, Math.min(15, parseInt(inp.value, 10) || 1)); });
+  if (state.allocations.length) generateStrictRandomWeeklyTimetable(); else { saveState(); renderWorkspace(); }
+  alert("Subject credits saved and credit-weighted 8-period timetable updated!");
+}
+
+function filterAccountsTable() { const q = (document.getElementById("accSearchInput")?.value || "").toLowerCase(), role = document.getElementById("accFilterRole")?.value || "all", sec = document.getElementById("accFilterSection")?.value || "all"; document.querySelectorAll(".acc-row").forEach(row => { row.style.display = (role === "all" || row.dataset.role === role) && (sec === "all" || row.dataset.sec === sec) && (!q || row.dataset.search.includes(q)) ? "" : "none"; }); }
+function filterFacultyTable() { const stg = document.getElementById("facFilterStage")?.value || "all", sub = document.getElementById("facFilterSub")?.value || "all", q = (document.getElementById("facFilterSearch")?.value || "").toLowerCase(); document.querySelectorAll(".fac-row").forEach(row => { row.style.display = (stg === "all" || row.dataset.stage === stg) && (sub === "all" || row.dataset.sub === sub) && (!q || row.dataset.search.includes(q)) ? "" : "none"; }); }
+
+function openEditAccountModal(userId) {
+  const u = state.users.find(x => x.id === userId); if (!u) return;
+  document.getElementById("inspectModalTitle").textContent = `Edit Account: ${u.name}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="grid-2"><div class="form-group"><label>Full Name</label><input type="text" id="edAccName" value="${u.biodata?.fullName || u.name}" /></div><div class="form-group"><label>Username</label><input type="text" id="edAccUser" value="${u.username}" /></div><div class="form-group"><label>Password</label><input type="text" id="edAccPass" value="${u.password}" /></div><div class="form-group"><label>Email ID</label><input type="text" id="edAccEmail" value="${u.email || ""}" /></div>${u.role === "faculty" ? `<div class="form-group"><label>Teaching Stage</label><select id="edAccStage"><option value="Primary" ${u.stage==="Primary"?"selected":""}>Primary (Classes 1–5)</option><option value="Secondary" ${u.stage==="Secondary"?"selected":""}>Secondary (6–10 / 6–12 Specialists)</option>${!TWO_TIER_SPECIALIST_CODES.has(u.subjectCode) ? `<option value="HigherSecondary" ${u.stage==="HigherSecondary"?"selected":""}>Higher Secondary (Classes 11–12)</option>` : ""}</select></div>` : ""}${u.role === "student" ? `<div class="form-group"><label>Admission No</label><input type="text" id="edAccAdmNo" value="${u.admissionNo || ""}" /></div><div class="form-group"><label>Class / Section</label><select id="edAccClass">${state.classes.map(c => `<option value="${c.id}" ${c.id===u.classId?"selected":""}>${c.id}</option>`).join("")}</select></div><div class="form-group"><label>Guardian Name</label><input type="text" id="edAccGuard" value="${u.biodata?.guardianName || ""}" /></div><div class="form-group"><label>Phone</label><input type="text" id="edAccPhone" value="${u.biodata?.phone || ""}" /></div>` : ""}</div><button class="btn btn-success" onclick="saveEditedAccount('${u.id}')">Save Account Changes</button>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+
+function saveEditedAccount(userId) {
+  const u = state.users.find(x => x.id === userId); if (!u) return;
+  u.name = document.getElementById("edAccName").value.trim() || u.name; u.username = document.getElementById("edAccUser").value.trim() || u.username; u.password = document.getElementById("edAccPass").value.trim() || u.password; u.email = document.getElementById("edAccEmail").value.trim() || u.email;
+  if (u.role === "faculty") u.stage = document.getElementById("edAccStage")?.value || u.stage;
+  if (u.role === "student") {
+    u.admissionNo = document.getElementById("edAccAdmNo")?.value.trim() || u.admissionNo;
+    const targetCls = state.classes.find(c => c.id === document.getElementById("edAccClass")?.value);
+    if (targetCls) { u.classId = targetCls.id; u.trackKey = targetCls.trackKey; u.grade = targetCls.grade; u.section = targetCls.section; u.stream = targetCls.stream; }
+    if (!u.biodata) u.biodata = {}; u.biodata.fullName = u.name; u.biodata.guardianName = document.getElementById("edAccGuard")?.value.trim() || ""; u.biodata.phone = document.getElementById("edAccPhone")?.value.trim() || "";
+  }
+  saveState(); closeModal("inspectModal"); renderWorkspace();
+}
+
+function deleteUserAccount(userId) {
+  const u = state.users.find(x => x.id === userId); if (!u || !confirm(`Remove ${u.name}?`)) return;
+  state.users = state.users.filter(x => x.id !== userId);
+  if (u.role === "faculty") state.allocations = state.allocations.filter(a => a.facultyId !== userId);
+  else if (u.role === "student") { state.attendance = state.attendance.filter(a => a.studentId !== userId); state.seatingPlan = state.seatingPlan.filter(s => s.studentId !== userId); }
+  saveState(); renderWorkspace();
+}
+
+function addFeeHeadComponent() { const label = document.getElementById("newFeeHeadLabel").value.trim(), def = parseFloat(document.getElementById("newFeeHeadDefault").value) || 0; if (!label) return alert("Enter fee component name."); const key = `fh_${Date.now()}`; state.feeHeads.push({ key, label, defaultVal: def }); Object.values(state.grades).forEach(gObj => { if (!gObj.fees) gObj.fees = {}; gObj.fees[key] = def; recalcStoredTrackFee(gObj); }); saveState(); renderWorkspace(); }
+function renameFeeHead(idx) { const v = document.getElementById(`feeHeadName_${idx}`).value.trim(); if (v) { state.feeHeads[idx].label = v; saveState(); renderWorkspace(); } }
+function removeFeeHead(idx) { const removed = state.feeHeads.splice(idx, 1)[0]; Object.values(state.grades).forEach(gObj => { if (gObj.fees) delete gObj.fees[removed.key]; recalcStoredTrackFee(gObj); }); saveState(); renderWorkspace(); }
+function recalcStoredTrackFee(gObj) { let sum = 0; state.feeHeads.forEach(h => { sum += (gObj.fees && gObj.fees[h.key] !== undefined ? gObj.fees[h.key] : h.defaultVal); }); gObj.feeAmount = sum; }
+function recalcFeeRow(trackKey) { let sum = 0; document.querySelectorAll(`.fee-grid-inp[data-track="${trackKey}"]`).forEach(inp => { sum += parseFloat(inp.value) || 0; }); const cell = document.getElementById(`feeRowTotal_${trackKey}`); if (cell) cell.textContent = `₹${sum}`; }
+function saveAllTrackFeesGrid() { Object.keys(state.grades).forEach(tk => { const inputs = document.querySelectorAll(`.fee-grid-inp[data-track="${tk}"]`); if (!inputs.length) return; const fees = {}; let total = 0; inputs.forEach(inp => { const val = parseFloat(inp.value) || 0; fees[inp.dataset.head] = val; total += val; }); state.grades[tk].fees = fees; state.grades[tk].feeAmount = total; }); saveState(); renderWorkspace(); alert("Saved all fees!"); }
+function applyUniformFeeToAll() { state.feeHeads.forEach(h => { const val = parseFloat(prompt(`Enter ${h.label} (₹) for ALL:`, String(h.defaultVal))); if (!isNaN(val)) { h.defaultVal = val; Object.values(state.grades).forEach(gObj => { if (!gObj.fees) gObj.fees = {}; gObj.fees[h.key] = val; }); } }); Object.values(state.grades).forEach(gObj => recalcStoredTrackFee(gObj)); saveState(); renderWorkspace(); }
+function createSchoolEvent() { const title = document.getElementById("evTitle").value.trim(), category = document.getElementById("evCat").value, startDateTime = document.getElementById("evDateTime").value, venue = document.getElementById("evVenue").value.trim(), maxSlots = parseInt(document.getElementById("evSlots").value, 10) || 50; if (!title || !startDateTime) return alert("Enter title and start date/time."); state.events.push({ id: `EV_${Date.now()}`, title, category, startDateTime, venue: venue || "Campus Ground", maxSlots, participants: [] }); saveState(); renderWorkspace(); }
+function dispatchEventCertificates() { const ev = state.events.find(e => e.id === document.getElementById("certEventId")?.value), heading = document.getElementById("certHeading").value.trim(), citation = document.getElementById("certCitation").value.trim(); if (!ev || !ev.participants.length) return alert("Select an event with participants."); ev.participants.forEach(p => { const stu = state.users.find(u => u.id === p.studentId); if (!stu) return; const displayName = stu.biodata?.fullName || stu.name; state.certificates.push({ id: `CERT_${Date.now()}_${stu.id}`, title: heading, eventName: ev.title, issuedDate: new Date().toLocaleDateString(), studentId: stu.id, studentName: displayName, classId: stu.classId, bodyText: citation.replace("{NAME}", displayName).replace("{EVENT}", ev.title) }); pushNotification(stu.id, "Certificate Dispatched", `You received "${heading}" for ${ev.title}.`); }); saveState(); alert("Certificates dispatched!"); }
+
+function filterOfficeFeeTable() { const sec = document.getElementById("offFeeSecFilter")?.value || "all", st = document.getElementById("offFeeStatusFilter")?.value || "all", q = (document.getElementById("offFeeSearch")?.value || "").toLowerCase(); document.querySelectorAll(".off-fee-row").forEach(row => { row.style.display = (sec === "all" || row.dataset.sec === sec) && (st === "all" || row.dataset.status === st) && (!q || row.dataset.search.includes(q)) ? "" : "none"; }); }
+function openCollectFeeModal(studentId, dueAmount) { const stu = state.users.find(u => u.id === studentId); if (!stu) return; document.getElementById("inspectModalTitle").textContent = `Collect Fee — ${stu.name}`; document.getElementById("inspectModalBody").innerHTML = `<div style="margin-bottom:12px;"><strong>Adm No:</strong> <code>${stu.admissionNo || "-"}</code> | <strong>Due:</strong> ₹${dueAmount}</div><div class="grid-2"><div class="form-group"><label>Amount Receiving (₹)</label><input type="number" id="offCollectAmt" max="${dueAmount}" min="1" value="${dueAmount}" /></div><div class="form-group"><label>Payment Mode</label><select id="offCollectMode"><option>Cash at Office Counter</option><option>UPI / QR Scan</option><option>Card / POS</option><option>Bank NEFT / DD</option></select></div></div><button class="btn btn-success" onclick="recordOfficeFeePayment('${stu.id}')">Confirm & Print Receipt</button>`; document.getElementById("inspectModal").classList.add("open"); }
+function recordOfficeFeePayment(studentId) { const amt = parseFloat(document.getElementById("offCollectAmt").value), mode = document.getElementById("offCollectMode").value; if (!amt || amt <= 0) return alert("Enter valid amount."); const receiptNo = `PSM-RCPT-${new Date().getFullYear()}-${100000 + trueRandomInt(900000)}`; state.feePayments.push({ id: `PAY_${Date.now()}`, studentId, amount: amt, mode, date: new Date().toLocaleDateString(), receiptNo, collectedBy: currentUser.name }); pushNotification(studentId, "Fee Receipt Generated", `Office recorded payment of ₹${amt} (${mode}). Receipt: ${receiptNo}.`); saveState(); closeModal("inspectModal"); renderWorkspace(); printStudentFeeReceipts(studentId); }
+function processNewOfficeAdmission() { const fullName = document.getElementById("admStuFullName").value.trim(), classId = document.getElementById("admStuClassId")?.value; if (!fullName || !classId) return alert("Enter Full Name and select Section."); const cls = state.classes.find(c => c.id === classId); const seq = String(state.users.filter(u => u.role === "student" && u.classId === classId).length + 1).padStart(3, "0"); const regPrefix = cls.stream ? `26C${cls.grade}${cls.stream.slice(0,3).toUpperCase()}${cls.section}` : `26C${String(cls.grade).padStart(2,"0")}${cls.section}`; const regNo = `${regPrefix}${seq}`, admissionNo = `ADM${new Date().getFullYear()}${state.admissionCounter++}`, username = regNo.toLowerCase(), password = `Stu@${1000 + trueRandomInt(9000)}`; state.users.push({ id: `STU_${regNo}`, role: "student", admissionNo, regNo, name: fullName, username, password, email: `${username}@psmschools.edu.in`, classId: cls.id, trackKey: cls.trackKey, grade: cls.grade, section: cls.section, stream: cls.stream, biodata: { fullName, dob: document.getElementById("admStuDob").value, bloodGroup: document.getElementById("admStuBlood").value.trim(), guardianName: document.getElementById("admStuGuardian").value.trim(), phone: document.getElementById("admStuPhone").value.trim(), prevSchool: document.getElementById("admStuPrevSchool").value.trim(), address: document.getElementById("admStuAddr").value.trim() } }); saveState(); renderWorkspace(); alert(`Admission Completed!\n• Adm No: ${admissionNo}\n• Reg No: ${regNo}\n• Username: ${username}\n• Password: ${password}`); }
+function logSchoolExpense() { const date = document.getElementById("expDate").value, category = document.getElementById("expCat").value, amount = parseFloat(document.getElementById("expAmount").value), description = document.getElementById("expDesc").value.trim(); if (!amount || amount <= 0 || !description) return alert("Enter valid amount and description."); state.schoolExpenses.push({ id: `EXP_${Date.now()}`, voucherNo: `VCH-${1000 + state.schoolExpenses.length + 1}`, date, category, amount, description }); saveState(); renderWorkspace(); }
+function decideBonafide(reqId, status) { const req = state.bonafideRequests.find(b => b.id === reqId); if (!req) return; req.status = status; if (status === "Approved") { req.certNo = `PSM-BON-${new Date().getFullYear()}-${1000 + trueRandomInt(9000)}`; req.issuedDate = new Date().toLocaleDateString(); pushNotification(req.studentId, "Bonafide Approved", `Certificate ${req.certNo} issued.`); } else pushNotification(req.studentId, "Bonafide Declined", `Request for "${req.purpose}" declined.`); saveState(); renderWorkspace(); }
+function viewBonafideCertificate(reqId) { const req = state.bonafideRequests.find(b => b.id === reqId), stu = state.users.find(u => u.id === req?.studentId); if (!req) return; document.getElementById("inspectModalTitle").textContent = `Printable Bonafide Certificate — ${SCHOOL_NAME}`; document.getElementById("inspectModalBody").innerHTML = `<div class="no-print" style="display:flex; justify-content:flex-end; margin-bottom:12px;"><button class="btn btn-primary" onclick="window.print()">${ICONS.printer}<span>Print / Save Bonafide PDF</span></button></div><div id="printablePdfArea" class="official-doc-sheet"><div class="doc-letterhead"><div class="doc-crest">${SCHOOL_CREST_SVG}</div><div class="doc-title-center"><h2>${SCHOOL_NAME}</h2><p>Administrative Office • Bonafide Student Certificate</p></div><div style="width:64px;"></div></div><div style="font-size:0.84rem; margin-bottom:16px; display:flex; justify-content:space-between;"><span>Certificate No: <strong>${req.certNo}</strong></span><span>Date of Issue: <strong>${req.issuedDate}</strong></span></div><p style="font-size:0.98rem; line-height:1.85; text-align:justify; margin:16px 0;">This is to certify that <strong>${stu?.biodata?.fullName || req.studentName}</strong> (Admission No: <strong>${stu?.admissionNo || req.admissionNo || "-"}</strong>, Registration No: <strong>${req.regNo}</strong>), Ward of <strong>${stu?.biodata?.guardianName || "Parent / Guardian"}</strong>, is a bonafide student of <strong>${SCHOOL_NAME}</strong> studying in <strong>Class ${req.classId}</strong> during the academic year <strong>2026–27</strong>. This certificate is issued upon request for the purpose of <strong>${req.purpose}</strong>.</p><div class="doc-footer-bar"><span>Official School Seal</span><span>Principal • ${SCHOOL_NAME}</span><span>Page 1 of 1</span></div></div>`; document.getElementById("inspectModal").classList.add("open"); }
+function toggleOfficeRecipientSelect() { const t = document.getElementById("offMsgTargetType").value; document.getElementById("offMsgRoleWrap").style.display = t === "ROLE" ? "block" : "none"; document.getElementById("offMsgUserWrap").style.display = t === "INDIVIDUAL" ? "block" : "none"; }
+function sendOfficeMessage() { const targetType = document.getElementById("offMsgTargetType").value, targetRole = document.getElementById("offMsgRole")?.value || "", targetUserId = document.getElementById("offMsgUserId")?.value || ""; const title = document.getElementById("offMsgTitle").value.trim(), body = document.getElementById("offMsgBody").value.trim(); if (!title || !body) return alert("Enter title and message."); state.announcements.unshift({ id: `ANN_${Date.now()}`, targetType, targetRole, targetUserId, title, body, sender: `Administrative Office (${SCHOOL_NAME})`, createdAt: new Date().toLocaleString() }); if (targetType === "INDIVIDUAL" && targetUserId) pushNotification(targetUserId, `Office Message: ${title}`, body); else if (targetType === "ROLE") state.users.filter(u => u.role === targetRole).forEach(u => pushNotification(u.id, `Office Notice: ${title}`, body)); else state.users.filter(u => u.role === "student" || u.role === "faculty").forEach(u => pushNotification(u.id, `Campus Announcement: ${title}`, body)); saveState(); renderWorkspace(); alert("Sent!"); }
+function replyToHelpdeskQuery(qId) { const q = state.helpdeskQueries.find(x => x.id === qId), replyText = document.getElementById(`hdReply_${qId}`)?.value.trim(); if (!q || !replyText) return alert("Enter reply."); q.replyText = replyText; q.repliedAt = new Date().toLocaleString(); q.status = "Replied"; pushNotification(q.senderId, `Office Replied: ${q.subject}`, replyText); saveState(); renderWorkspace(); }
+
+function filterPeStudentTable() { const sec = document.getElementById("peSecFilter")?.value || "all", q = (document.getElementById("peSearchInput")?.value || "").toLowerCase(); document.querySelectorAll(".pe-stu-row").forEach(row => { row.style.display = (sec === "all" || row.dataset.sec === sec) && (!q || row.dataset.search.includes(q)) ? "" : "none"; }); }
+function openLogPeActionModal(studentId, logType) {
+  const stu = state.users.find(u => u.id === studentId); if (!stu) return;
+  document.getElementById("inspectModalTitle").textContent = `Log ${logType} — ${stu.name}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div style="margin-bottom:12px;"><strong>Student:</strong> ${stu.biodata?.fullName || stu.name} (${stu.regNo}) • ${stu.classId}</div><div class="grid-2"><div class="form-group"><label>Date</label><input type="date" id="peLogDate" value="2026-11-19" /></div><div class="form-group"><label>Time</label><input type="time" id="peLogTime" value="09:05" /></div></div><div class="form-group"><label>Remarks *</label><textarea id="peLogDetails" rows="3"></textarea></div><button class="btn btn-danger" onclick="savePeDisciplineLog('${stu.id}','${logType}')">Submit Record to Student & Office</button>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+function savePeDisciplineLog(studentId, logType) {
+  const stu = state.users.find(u => u.id === studentId), date = document.getElementById("peLogDate").value, time = document.getElementById("peLogTime").value, details = document.getElementById("peLogDetails").value.trim();
+  if (!stu || !details) return alert("Enter details.");
+  state.peLogs.push({ id: `PE_${Date.now()}`, date, time, studentId: stu.id, regNo: stu.regNo, studentName: stu.biodata?.fullName || stu.name, classId: stu.classId, type: logType, details, loggedBy: currentUser.name });
+  pushNotification(stu.id, `PE Notice: ${logType}`, `${details} (${date} ${time}).`);
+  state.users.filter(u => u.role === "office").forEach(off => pushNotification(off.id, `PE Report: ${logType}`, `${stu.name} (${stu.classId}) — ${details}`));
+  saveState(); closeModal("inspectModal"); renderWorkspace(); alert("Logged!");
+}
+
+function toggleDiagramInput() { document.getElementById("diagramUploadWrap").style.display = document.getElementById("qTypeSelect").value === "Diagram Based" ? "block" : "none"; }
+function addDraftQuestion() {
+  const type = document.getElementById("qTypeSelect").value, marks = parseInt(document.getElementById("qMarks").value, 10) || 2, text = document.getElementById("qPromptText").value.trim(), fileInput = document.getElementById("qDiagramFile");
+  if (!text) return alert("Enter question text.");
+  if (type === "Diagram Based" && fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => { draftQuestions.push({ type, marks, text, diagramDataUrl: e.target.result }); document.getElementById("qPromptText").value = ""; fileInput.value = ""; renderDraftQuestions(); };
+    reader.readAsDataURL(fileInput.files[0]);
+  } else { draftQuestions.push({ type, marks, text, diagramDataUrl: null }); document.getElementById("qPromptText").value = ""; renderDraftQuestions(); }
+}
+function renderDraftQuestions() {
+  const box = document.getElementById("draftQuestionsList"); if (!box) return;
+  box.innerHTML = draftQuestions.length ? draftQuestions.map((q, idx) => `<div style="border:1px solid #cbd5e1; border-radius:8px; padding:10px; margin-bottom:8px; background:#fff;"><div style="display:flex; justify-content:space-between;"><strong>Q${idx+1}. [${q.type}] (${q.marks}M)</strong><button class="btn btn-sm btn-danger" onclick="draftQuestions.splice(${idx},1); renderDraftQuestions();">Remove</button></div><p style="margin-top:6px; white-space:pre-wrap; font-size:0.86rem;">${q.text}</p>${q.diagramDataUrl ? `<img src="${q.diagramDataUrl}" style="max-height:150px; margin-top:6px;" />` : ""}</div>`).join("") : `<div style="font-size:0.82rem; color:var(--muted);">No questions added yet.</div>`;
+}
+function submitQuestionPaperToCOE() {
+  const [trackKey, subjectCode, subjectName] = document.getElementById("qpAllocSelect").value.split("||");
+  const title = document.getElementById("qpTitle").value.trim(), duration = document.getElementById("qpDuration")?.value.trim() || "3 Hours", totalMarks = parseInt(document.getElementById("qpMaxMarks").value, 10) || 80;
+  if (!title || !draftQuestions.length) return alert("Enter title and add questions.");
+  state.questionPapers.push({ id: `QP_${Date.now()}`, title, duration, trackKey, subjectCode, subjectName, facultyId: currentUser.id, totalMarks, questions: [...draftQuestions], status: "Pending COE", coeRemark: "", approvedDate: null });
+  draftQuestions = []; saveState(); renderWorkspace(); alert("Sent to COE!");
+}
+function buildMarksEntryTable() {
+  const val = document.getElementById("mkAllocSelect")?.value; if (!val) return;
+  const [classId, subjectCode, subjectName] = val.split("||");
+  const roster = state.users.filter(u => u.role === "student" && u.classId === classId);
+  document.getElementById("marksTableContainer").innerHTML = `<div class="table-wrap" style="margin-bottom:12px;"><table><thead><tr><th>Reg No</th><th>Student</th><th>Exam Attendance Status</th><th>Marks</th></tr></thead><tbody>${roster.map(s => `<tr><td><code>${s.regNo}</code></td><td>${s.biodata?.fullName || s.name}</td><td><select class="mk-exstatus-sel" data-stuid="${s.id}" onchange="onExamStatusSelectChange('${s.id}', this.value)" style="max-width:165px;"><option value="Present">Present</option><option value="Absent">Absent</option><option value="OD">On Duty (OD)</option><option value="ML">Medical Leave (ML)</option></select></td><td><input type="number" id="mkInp_${s.id}" class="mk-score-input" data-stuid="${s.id}" min="0" value="0" style="max-width:110px;" /></td></tr>`).join("")}</tbody></table></div><button class="btn btn-primary" onclick="submitMarksToCOE('${classId}','${subjectCode}','${subjectName.replace(/'/g,"")}')">Save & Send Mark Sheet to COE</button>`;
+}
+function onExamStatusSelectChange(stuId, status) { const inp = document.getElementById(`mkInp_${stuId}`); if (inp) { inp.disabled = status !== "Present"; if (status !== "Present") inp.value = 0; } }
+function submitMarksToCOE(classId, subjectCode, subjectName) {
+  const examName = document.getElementById("mkExamName").value.trim(), maxMarks = parseInt(document.getElementById("mkMaxMarks").value, 10) || 100;
+  if (!examName) return alert("Enter Exam Name.");
+  const entries = [];
+  document.querySelectorAll(".mk-score-input").forEach(inp => { const stuid = inp.dataset.stuid, examStatus = document.querySelector(`.mk-exstatus-sel[data-stuid="${stuid}"]`)?.value || "Present"; entries.push({ studentId: stuid, examStatus, marks: examStatus === "Present" ? (parseFloat(inp.value) || 0) : null, reExamApproved: false, reExamMarks: null, editRequested: false, pendingMarks: null }); });
+  state.examMarks.push({ id: `MK_${Date.now()}`, examName, classId, subjectCode, subjectName, maxMarks, facultyId: currentUser.id, status: "Pending COE", published: false, entries });
+  saveState(); renderWorkspace(); alert("Mark sheet sent to COE!");
+}
+function submitReExamReply(sheetId, studentId) {
+  const sheet = state.examMarks.find(m => m.id === sheetId), raw = document.getElementById(`reExVal_${sheetId}_${studentId}`)?.value.trim();
+  if (!sheet || !raw) return alert("Enter marks or Not Applicable.");
+  const ent = sheet.entries.find(e => e.studentId === studentId); if (!ent) return;
+  if (raw.toUpperCase() === "N/A" || raw.toUpperCase() === "NOT APPLICABLE") { ent.reExamMarks = "Not Applicable"; ent.marks = null; }
+  else { const num = parseFloat(raw); if (isNaN(num)) return alert("Enter valid number or Not Applicable."); ent.reExamMarks = num; ent.marks = num; ent.examStatus = "Present (Re-Exam)"; }
+  ent.reExamApproved = false; sheet.status = "Pending COE"; saveState(); renderWorkspace(); alert("Re-exam reply sent to COE!");
+}
+function requestStudentMarkEdit(sheetId, studentId) {
+  const sheet = state.examMarks.find(m => m.id === sheetId), val = parseFloat(document.getElementById(`revMk_${sheetId}_${studentId}`).value);
+  if (!sheet || isNaN(val)) return;
+  const ent = sheet.entries.find(e => e.studentId === studentId);
+  if (ent) { ent.editRequested = true; ent.pendingMarks = val; saveState(); renderWorkspace(); alert("Edit sent to COE."); }
+}
+function inspectQuestionPaper(qpId) {
+  const qp = state.questionPapers.find(q => q.id === qpId); if (!qp) return;
+  document.getElementById("inspectModalTitle").textContent = `Inspect: ${qp.title}`;
+  document.getElementById("inspectModalBody").innerHTML = `<div style="margin-bottom:12px;"><strong>Track:</strong> ${state.grades[qp.trackKey]?.displayName || qp.trackKey} | <strong>Subject:</strong> ${qp.subjectName}</div>${qp.questions.map((q, i) => `<div style="border:1px solid #cbd5e1; border-radius:8px; padding:12px; margin-bottom:10px; background:#f8fafc;"><strong>Q${i+1}. [${q.type}] (${q.marks}M)</strong><p style="margin-top:6px; white-space:pre-wrap;">${q.text}</p>${q.diagramDataUrl ? `<img src="${q.diagramDataUrl}" style="max-height:180px; margin-top:6px;" />` : ""}</div>`).join("")}<div class="form-group"><label>COE Remark</label><input type="text" id="coeQpRemark" value="${qp.coeRemark || "Verified and sealed by COE."}" /></div><div style="display:flex; gap:8px; flex-wrap:wrap;"><button class="btn btn-success" onclick="decideQuestionPaper('${qp.id}','Approved')">Approve & Seal Exam Paper</button><button class="btn btn-danger" onclick="decideQuestionPaper('${qp.id}','Rejected')">Reject</button></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+function decideQuestionPaper(qpId, status) {
+  const qp = state.questionPapers.find(q => q.id === qpId); if (!qp) return;
+  qp.status = status; qp.coeRemark = document.getElementById("coeQpRemark").value.trim(); if (status === "Approved") qp.approvedDate = new Date().toLocaleDateString();
+  pushNotification(qp.facultyId, `Question Paper ${status}`, `COE marked "${qp.title}" as ${status}.`);
+  saveState(); closeModal("inspectModal"); renderWorkspace(); if (status === "Approved") openApprovedQuestionPaperPDF(qpId);
+}
+function inspectMarkSheet(mkId) {
+  const mk = state.examMarks.find(m => m.id === mkId), students = state.users.filter(u => u.role === "student"); if (!mk) return;
+  document.getElementById("inspectModalTitle").textContent = `Inspect Marks: ${mk.examName} (${mk.classId})`;
+  document.getElementById("inspectModalBody").innerHTML = `<div class="table-wrap" style="margin-bottom:14px;"><table><thead><tr><th>Reg No</th><th>Student</th><th>Status</th><th>Marks</th><th>Pending Edit</th></tr></thead><tbody>${mk.entries.map(e => { const stu = students.find(s => s.id === e.studentId); return `<tr><td><code>${stu ? stu.regNo : e.studentId}</code></td><td>${stu ? stu.name : e.studentId}</td><td><span class="badge ${e.examStatus==="Present"?"badge-green":"badge-purple"}">${e.examStatus || "Present"}</span></td><td><strong>${e.marks === null ? "N/A" : e.marks}</strong> / ${mk.maxMarks}</td><td>${e.editRequested ? `<span class="badge badge-amber">Req: ${e.pendingMarks}</span>` : "None"}</td></tr>`; }).join("")}</tbody></table></div><button class="btn btn-success" onclick="approveSingleMarkSheet('${mk.id}')">Approve This Mark Sheet Individually</button>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+function approveSingleMarkSheet(mkId) {
+  const mk = state.examMarks.find(m => m.id === mkId); if (!mk) return;
+  mk.status = "Approved"; mk.entries.forEach(e => { if (e.editRequested && e.pendingMarks !== null) { e.marks = e.pendingMarks; e.editRequested = false; e.pendingMarks = null; } });
+  pushNotification(mk.facultyId, "Mark Sheet Approved", `Mark sheet for ${mk.examName} (${mk.classId} • ${mk.subjectCode}) approved.`);
+  saveState(); closeModal("inspectModal"); renderWorkspace();
+}
+function publishSingleMarkSheet(mkId) {
+  const mk = state.examMarks.find(m => m.id === mkId); if (!mk || mk.status !== "Approved") return;
+  mk.published = true;
+  state.users.filter(u => u.role === "student" && u.classId === mk.classId).forEach(s => pushNotification(s.id, "Exam Result Published", `Results for ${mk.examName} — ${mk.subjectName} are live.`));
+  saveState(); renderWorkspace();
+}
+function unpublishSingleMarkSheet(mkId) { const mk = state.examMarks.find(m => m.id === mkId); if (mk) { mk.published = false; saveState(); renderWorkspace(); } }
+function approveIndividualReExam(mkId, studentId) {
+  const mk = state.examMarks.find(m => m.id === mkId), ent = mk?.entries.find(e => e.studentId === studentId), stu = state.users.find(u => u.id === studentId);
+  if (!mk || !ent) return;
+  ent.reExamApproved = true;
+  pushNotification(mk.facultyId, "OD/ML Re-Exam Approved", `Re-exam authorized for ${stu ? stu.name : studentId} (${mk.classId} • ${mk.subjectCode}).`);
+  pushNotification(studentId, "Re-Examination Approved", `COE approved your ${ent.examStatus} re-exam for ${mk.examName} (${mk.subjectName}).`);
+  saveState(); renderWorkspace();
+}
+function generateTrackExamTimetable() {
+  const examName = document.getElementById("coeExamName").value.trim(), startStr = document.getElementById("coeExamStart").value, sessionTime = document.getElementById("coeExamTiming").value.trim();
+  const uploadDeadlineDays = Math.max(1, parseInt(document.getElementById("coeUploadDays").value, 10) || 10);
+  const selectedTracks = Array.from(document.querySelectorAll(".coe-trk-chk:checked")).map(c => c.value);
+  if (!examName || !startStr || !selectedTracks.length) return alert("Enter Exam Name, Start Date, and select tracks.");
+
+  state.examTimetable = [];
+  const startDate = new Date(startStr);
+  selectedTracks.forEach(tk => {
+    const gObj = state.grades[tk]; if (!gObj) return;
+    let dayOffset = 0;
+    trueShuffle(gObj.subjects).forEach(sub => {
+      const d = new Date(startDate); d.setDate(startDate.getDate() + dayOffset);
+      while (!getCalendarDayPolicy(d.toISOString().slice(0,10)).isWorking) { dayOffset++; d.setDate(startDate.getDate() + dayOffset); }
+      const examDateStr = d.toISOString().slice(0,10), dl = new Date(d); dl.setDate(d.getDate() + uploadDeadlineDays);
+      state.examTimetable.push({ id: `ETT_${tk}_${sub.code}`, examName, trackKey: tk, grade: gObj.grade, subjectCode: sub.code, subjectName: sub.name, date: examDateStr, sessionTime, uploadDeadlineDays, uploadDeadlineDate: dl.toISOString().slice(0,10) });
+      dayOffset++;
+    });
+  });
+
+  const notifiedFac = new Set();
+  state.allocations.forEach(a => {
+    if (selectedTracks.includes(a.trackKey) && !notifiedFac.has(a.facultyId)) {
+      notifiedFac.add(a.facultyId);
+      pushNotification(a.facultyId, "Exam Timetable & Upload Deadline", `COE published ${examName}. Upload marks within ${uploadDeadlineDays} days of exam completion.`);
+    }
+  });
+  saveState(); renderWorkspace(); alert("Exam timetable generated!");
+}
+function automateRandomInvigilators() {
+  if (!state.examTimetable.length || !state.seatingPlan.length) return alert("Generate Exam Timetable and Room Seating first.");
+  const faculty = state.users.filter(u => u.role === "faculty"); if (!faculty.length) return alert("No faculty available.");
+  const activeExamRooms = [...new Set(state.seatingPlan.map(s => s.roomNo))], uniqueExamDates = [...new Set(state.examTimetable.map(t => `${t.examName}||${t.date}||${t.sessionTime}`))];
+  state.invigilators = [];
+  uniqueExamDates.forEach(slotKey => {
+    const [examName, date, sessionTime] = slotKey.split("||"), shuffledRooms = trueShuffle(activeExamRooms), shuffledFaculty = trueShuffle(faculty);
+    shuffledRooms.forEach((roomNo, idx) => { const f = shuffledFaculty[idx % shuffledFaculty.length]; state.invigilators.push({ id: `INV_${date}_${roomNo}`, examName, date, sessionTime, roomNo, facultyId: f.id, facultyName: f.name }); });
+  });
+  [...new Set(state.invigilators.map(i => i.facultyId))].forEach(fid => pushNotification(fid, "Exam Invigilation Duty Appointed", "COE randomly appointed you for exam invigilation duties."));
+  saveState(); renderWorkspace(); alert("Random exam invigilators appointed!");
+}
+function runStrictRandomSeating() {
+  if (!state.examTimetable.length) return alert("Generate Exam Timetable first.");
+  const targetTracks = new Set(state.examTimetable.map(t => t.trackKey)), examName = state.examTimetable[0].examName;
+  const pool = trueShuffle(state.users.filter(u => u.role === "student" && targetTracks.has(u.trackKey)));
+  if (!pool.length) return alert("No students enrolled.");
+  const arranged = [], remaining = [...pool];
+  while (remaining.length) {
+    const last = arranged[arranged.length - 1]; let pickIdx = remaining.findIndex(s => !last || s.classId !== last.classId);
+    if (pickIdx === -1) pickIdx = 0; arranged.push(remaining.splice(pickIdx, 1)[0]);
+  }
+  const requiredRooms = Math.ceil(arranged.length / 30);
+  while (state.rooms.length < requiredRooms) { const nextNo = getNextAvailableRoomNo(); state.rooms.push({ id: `RM_${nextNo}`, roomNo: nextNo, capacity: 30 }); }
+  const shuffledRooms = trueShuffle(state.rooms);
+  state.seatingPlan = []; let roomIdx = 0, seatInRoom = 1;
+  arranged.forEach(stu => {
+    const room = shuffledRooms[roomIdx];
+    state.seatingPlan.push({ id: `SEAT_${stu.id}`, examName, roomNo: room.roomNo, seatNo: `R${room.roomNo}-S${String(seatInRoom).padStart(2,"0")}`, studentId: stu.id, regNo: stu.regNo, studentName: stu.biodata?.fullName || stu.name, classId: stu.classId });
+    seatInRoom++; if (seatInRoom > room.capacity) { roomIdx++; seatInRoom = 1; }
+  });
+  saveState(); renderWorkspace(); alert(`Seating generated across ${roomIdx + 1} numbered rooms!`);
+}
+function publishAllHallTickets() { if (!state.seatingPlan.length) return alert("Generate Seating first."); state.hallTicketsPublished = true; saveState(); renderWorkspace(); alert("Hall Tickets published!"); }
+function revokeStudentDebar(studentId) { state.debarOverrides[studentId] = "Revoked"; saveState(); renderWorkspace(); }
+function reinstateDebar(studentId) { delete state.debarOverrides[studentId]; saveState(); renderWorkspace(); }
+
+function saveStudentBiodata() {
+  const stu = state.users.find(u => u.id === currentUser.id); if (!stu) return;
+  stu.biodata = { ...stu.biodata, fullName: document.getElementById("bioFullName").value.trim() || stu.name, dob: document.getElementById("bioDob").value, bloodGroup: document.getElementById("bioBlood").value.trim(), guardianName: document.getElementById("bioGuardian").value.trim(), phone: document.getElementById("bioPhone").value.trim(), address: document.getElementById("bioAddress").value.trim() };
+  stu.name = stu.biodata.fullName; currentUser.name = stu.name; document.getElementById("sidebarUserName").textContent = stu.name;
+  saveState(); alert("Biodata saved!");
+}
+function applyForBonafide() {
+  const purpose = document.getElementById("stuBonafidePurpose")?.value.trim(); if (!purpose) return alert("Enter purpose.");
+  const stu = state.users.find(u => u.id === currentUser.id);
+  state.bonafideRequests.push({ id: `BONREQ_${Date.now()}`, studentId: stu.id, admissionNo: stu.admissionNo || "", regNo: stu.regNo, studentName: stu.biodata?.fullName || stu.name, classId: stu.classId, purpose, requestDate: new Date().toLocaleDateString(), status: "Pending Office", certNo: "", issuedDate: "" });
+  state.users.filter(u => u.role === "office").forEach(off => pushNotification(off.id, "New Bonafide Request", `${stu.name} (${stu.classId}) requested Bonafide (${purpose}).`));
+  saveState(); renderWorkspace(); alert("Bonafide request sent to Office!");
+}
+function submitHelpdeskQuery(subInputId, bodyInputId) {
+  const subject = document.getElementById(subInputId)?.value.trim(), message = document.getElementById(bodyInputId)?.value.trim();
+  if (!subject || !message) return alert("Enter subject and message.");
+  const meta = currentUser.role === "student" ? `Class ${currentUser.classId} • ${currentUser.regNo}` : `${currentUser.subjectCode || "Faculty"}`;
+  state.helpdeskQueries.push({ id: `HD_${Date.now()}`, senderId: currentUser.id, senderRole: currentUser.role, senderName: currentUser.name, senderMeta: meta, subject, message, createdAt: new Date().toLocaleString(), replyText: "", repliedAt: "", status: "Open" });
+  state.users.filter(u => u.role === "office").forEach(off => pushNotification(off.id, `New ${currentUser.role.toUpperCase()} Inquiry`, `${currentUser.name}: ${subject}`));
+  saveState(); renderWorkspace(); alert("Sent to Office!");
+}
+function confirmEventJoin(evId) {
+  const ev = state.events.find(e => e.id === evId); if (!ev) return;
+  document.getElementById("inspectModalTitle").textContent = "Confirm Event Participation";
+  document.getElementById("inspectModalBody").innerHTML = `<p style="margin-bottom:12px;">Confirm participation in <strong>${ev.title}</strong> (${ev.category})?</p><div style="display:flex; gap:10px;"><button class="btn btn-success" onclick="executeEventJoin('${ev.id}')">Confirm</button><button class="btn btn-outline" onclick="closeModal('inspectModal')">Cancel</button></div>`;
+  document.getElementById("inspectModal").classList.add("open");
+}
+function executeEventJoin(evId) {
+  const ev = state.events.find(e => e.id === evId);
+  if (ev && !ev.participants.some(p => p.studentId === currentUser.id)) { ev.participants.push({ studentId: currentUser.id, status: "Confirmed" }); saveState(); }
+  closeModal("inspectModal"); renderWorkspace();
+}
+function cancelEventJoin(evId) {
+  const ev = state.events.find(e => e.id === evId); if (!ev) return;
+  if (((new Date(ev.startDateTime) - new Date()) / 36e5) < 8) return alert("Cancellation closed (< 8h left).");
+  ev.participants = ev.participants.filter(p => p.studentId !== currentUser.id); saveState(); renderWorkspace();
+}
+
+refreshLandingMetrics();
+</script>
+</body>
+</html>
